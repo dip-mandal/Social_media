@@ -1774,6 +1774,99 @@
             cursor: pointer;
             font-size: 18px;
         }
+
+        /* OTP Page Specific Styles */
+.otp-info {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.otp-info span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.otp-resend {
+    text-align: center;
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.otp-resend p {
+    color: #94a3b8;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.btn-resend {
+    background: none;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-resend:hover:not(:disabled) {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-resend:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.timer {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.timer span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* OTP Input Styling */
+.otp-input-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.otp-digit {
+    width: 55px;
+    height: 65px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    background: rgba(30, 41, 59, 0.7);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    color: var(--light);
+    transition: all 0.3s;
+}
+
+.otp-digit:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+
     </style>
 </head>
 <body>
@@ -1855,9 +1948,14 @@
                 </form>
                 <div class="divider"><span>OR</span></div>
                 <button class="btn btn-google" onclick="googleLogin()">
-                    <img src="https://www.google.com/favicon.ico" alt="Google">
-                    Continue with Google
-                </button>
+            <svg viewBox="0 0 24 24" width="20" height="20">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Continue with Google
+        </button>
                 <div class="link">
                     Already have an account?
                     <a href="#" onclick="showLoginPage()">Sign In to your account</a>
@@ -1897,15 +1995,59 @@
                 </form>
                 <div class="divider"><span>OR</span></div>
                 <button class="btn btn-google" onclick="googleLogin()">
-                    <img src="https://www.google.com/favicon.ico" alt="Google">
-                    Continue with Google
-                </button>
+            <svg viewBox="0 0 24 24" width="20" height="20">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Continue with Google
+        </button>
                 <div class="link">
                     Don't have an account?
                     <a href="#" onclick="showRegisterPage()">Join Exclusive Network</a>
                 </div>
             </div>
         </div>
+
+        <!-- OTP Verification Page -->
+<div id="otpPage" class="auth-container hidden">
+    <div class="auth-header">
+        <h1 class="logo">meiXuP</h1>
+        <p>Verify Your Identity</p>
+    </div>
+    <div class="auth-body">
+        <div id="otpAlert"></div>
+        <form id="otpForm">
+            <div class="form-group">
+                <label>Enter 6-digit OTP Code</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-key"></i>
+                    <input type="text" id="otpCode" placeholder="123456" maxlength="6" pattern="\d{6}" required>
+                </div>
+                <p class="otp-info">We sent a verification code to <span id="otpEmail">your email</span></p>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-shield-alt"></i> Verify & Continue
+            </button>
+            
+            <div class="otp-resend">
+                <p>Didn't receive the code?</p>
+                <button type="button" class="btn-resend" onclick="resendOTP()" id="resendBtn">
+                    <i class="fas fa-redo"></i> Resend OTP
+                </button>
+                <div class="timer" id="resendTimer">Resend available in <span id="countdown">60</span>s</div>
+            </div>
+        </form>
+        
+        <div class="link">
+            <a href="#" onclick="showRegisterPage()">
+                <i class="fas fa-arrow-left"></i> Back to Registration
+            </a>
+        </div>
+    </div>
+</div>
 
         <!-- Main App -->
         <div id="appContainer" class="app-container">
@@ -2151,513 +2293,881 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
     <script>
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCUo06ClzaRvmyTQycwzZNZQef7hzkA6tk",
-            authDomain: "meixup-af692.firebaseapp.com",
-            projectId: "meixup-af692",
-            storageBucket: "meixup-af692.firebasestorage.app",
-            messagingSenderId: "718850232696",
-            appId: "1:718850232696:web:c9ce5bc5f238e1f29a788d",
-            measurementId: "G-MD4FFSKYDZ"
-        };
+    // Firebase Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCUo06ClzaRvmyTQycwzZNZQef7hzkA6tk",
+        authDomain: "meixup-af692.firebaseapp.com",
+        projectId: "meixup-af692",
+        storageBucket: "meixup-af692.firebasestorage.app",
+        messagingSenderId: "718850232696",
+        appId: "1:718850232696:web:c9ce5bc5f238e1f29a788d",
+        measurementId: "G-MD4FFSKYDZ"
+    };
 
-        // Initialize Firebase
-        let firebaseApp;
-        let firebaseAuth;
+    // Initialize Firebase
+    let firebaseApp;
+    let firebaseAuth;
+    
+    try {
+        firebaseApp = firebase.initializeApp(firebaseConfig);
+        firebaseAuth = firebase.auth();
+        console.log('Firebase initialized successfully');
+    } catch (error) {
+        console.error('Firebase initialization error:', error);
+    }
+
+    // Configuration
+    const API_BASE_URL = 'http://localhost:8000';
+    let accessToken = localStorage.getItem('access_token');
+    let refreshToken = localStorage.getItem('refresh_token');
+    let currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+    let websocket = null;
+    let currentChatUserId = null;
+    let datingProfiles = [];
+    let currentDatingIndex = 0;
+    let selectedPostMedia = null;
+    let resendTimerInterval = null;
+
+    // Toast notification system
+    function showToast(message, type = 'info') {
+        const toastContainer = document.getElementById('toastContainer');
+        const toastId = 'toast-' + Date.now();
         
-        try {
-            firebaseApp = firebase.initializeApp(firebaseConfig);
-            firebaseAuth = firebase.auth();
-            console.log('Firebase initialized successfully');
-        } catch (error) {
-            console.error('Firebase initialization error:', error);
-        }
-
-        // Configuration
-        const API_BASE_URL = 'http://localhost:8000';
-        let accessToken = localStorage.getItem('access_token');
-        let refreshToken = localStorage.getItem('refresh_token');
-        let currentUser = JSON.parse(localStorage.getItem('user') || '{}');
-        let websocket = null;
-        let currentChatUserId = null;
-        let datingProfiles = [];
-        let currentDatingIndex = 0;
-        let selectedPostMedia = null;
-
-        // Toast notification system
-        function showToast(message, type = 'info') {
-            const toastContainer = document.getElementById('toastContainer');
-            const toastId = 'toast-' + Date.now();
-            
-            const icons = {
-                success: 'fas fa-check-circle',
-                error: 'fas fa-exclamation-circle',
-                info: 'fas fa-info-circle'
-            };
-            
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.id = toastId;
-            toast.innerHTML = `
-                <i class="${icons[type]}"></i>
-                <div class="toast-content">
-                    <h4>${type.charAt(0).toUpperCase() + type.slice(1)}</h4>
-                    <p>${message}</p>
-                </div>
-                <button class="close-toast" onclick="document.getElementById('${toastId}').remove()">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
-            
-            toastContainer.appendChild(toast);
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                const toastElement = document.getElementById(toastId);
-                if (toastElement) {
-                    toastElement.style.animation = 'slideInRight 0.3s ease reverse';
-                    setTimeout(() => toastElement.remove(), 300);
-                }
-            }, 5000);
-        }
-
-        // Password toggle
-        function togglePassword(inputId) {
-            const input = document.getElementById(inputId);
-            const toggle = input.nextElementSibling;
-            const icon = toggle.querySelector('i');
-            
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.className = 'fas fa-eye-slash';
-            } else {
-                input.type = 'password';
-                icon.className = 'fas fa-eye';
+        const icons = {
+            success: 'fas fa-check-circle',
+            error: 'fas fa-exclamation-circle',
+            info: 'fas fa-info-circle'
+        };
+        
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.id = toastId;
+        toast.innerHTML = `
+            <i class="${icons[type]}"></i>
+            <div class="toast-content">
+                <h4>${type.charAt(0).toUpperCase() + type.slice(1)}</h4>
+                <p>${message}</p>
+            </div>
+            <button class="close-toast" onclick="document.getElementById('${toastId}').remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        
+        toastContainer.appendChild(toast);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            const toastElement = document.getElementById(toastId);
+            if (toastElement) {
+                toastElement.style.animation = 'slideInRight 0.3s ease reverse';
+                setTimeout(() => toastElement.remove(), 300);
             }
-        }
+        }, 5000);
+    }
 
-        // Initialize
-        window.onload = async function() {
-            if (accessToken) {
-                // Verify token is still valid
-                try {
-                    const response = await fetch(`${API_BASE_URL}/auth/verify`, {
-                        headers: { 'Authorization': `Bearer ${accessToken}` }
-                    });
-                    
-                    if (response.ok) {
-                        await initApp();
-                    } else {
-                        showRegisterPage();
-                    }
-                } catch (error) {
+    // Password toggle
+    function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const toggle = input.nextElementSibling;
+        const icon = toggle.querySelector('i');
+        
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.className = 'fas fa-eye-slash';
+        } else {
+            input.type = 'password';
+            icon.className = 'fas fa-eye';
+        }
+    }
+
+    // Initialize
+    window.onload = async function() {
+        if (accessToken) {
+            // Verify token is still valid
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/verify`, {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+                
+                if (response.ok) {
+                    await initApp();
+                } else {
                     showRegisterPage();
                 }
-            } else {
+            } catch (error) {
                 showRegisterPage();
             }
+        } else {
+            showRegisterPage();
+        }
+    };
+
+    // Helper Functions
+    function showAlert(elementId, message, type = 'success') {
+        const alertDiv = document.getElementById(elementId);
+        const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+        alertDiv.innerHTML = `<div class="alert alert-${type}"><i class="${icon}"></i>${message}</div>`;
+        setTimeout(() => alertDiv.innerHTML = '', 5000);
+    }
+
+    function showLoading(elementId, message = 'Loading...') {
+        const element = document.getElementById(elementId);
+        element.innerHTML = `
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>${message}</p>
+            </div>
+        `;
+    }
+
+    function showEmptyState(elementId, icon = 'fas fa-inbox', title = 'Nothing here yet', message = 'Check back later!') {
+        const element = document.getElementById(elementId);
+        element.innerHTML = `
+            <div class="empty-state">
+                <i class="${icon}"></i>
+                <h3>${title}</h3>
+                <p>${message}</p>
+            </div>
+        `;
+    }
+
+    // Handle FastAPI error responses
+    function handleFastAPIError(response, result) {
+        if (response.status === 422) {
+            const errors = result.detail;
+            if (Array.isArray(errors)) {
+                return errors.map(err => err.msg || err.message).join(', ');
+            }
+            return errors || 'Validation failed';
+        }
+        return result.detail || result.message || 'Request failed';
+    }
+
+    // Make authenticated request with token refresh
+    async function makeAuthenticatedRequest(url, options = {}) {
+        const defaultOptions = {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        };
+        
+        const mergedOptions = { ...defaultOptions, ...options };
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}${url}`, mergedOptions);
+            
+            // Handle token expiration
+            if (response.status === 401) {
+                const refreshed = await refreshAccessToken();
+                if (refreshed) {
+                    mergedOptions.headers.Authorization = `Bearer ${accessToken}`;
+                    return await fetch(`${API_BASE_URL}${url}`, mergedOptions);
+                } else {
+                    logout();
+                    throw new Error('Session expired. Please login again.');
+                }
+            }
+            
+            return response;
+        } catch (error) {
+            console.error('Request error:', error);
+            throw error;
+        }
+    }
+
+    // Page Navigation
+    function showRegisterPage() {
+        document.getElementById('registerPage').classList.remove('hidden');
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('otpPage').classList.add('hidden');
+        document.getElementById('appContainer').classList.remove('active');
+        
+        // Clear any alerts
+        document.getElementById('registerAlert').innerHTML = '';
+        document.getElementById('loginAlert').innerHTML = '';
+        document.getElementById('otpAlert').innerHTML = '';
+        
+        // Clear form if there's no pending email
+        if (!localStorage.getItem('pending_email')) {
+            document.getElementById('registerForm').reset();
+        } else {
+            // If there's a pending email, pre-fill the email field
+            const pendingEmail = localStorage.getItem('pending_email');
+            document.getElementById('regEmail').value = pendingEmail;
+            showToast('Continue your registration', 'info');
+        }
+    }
+
+    function showLoginPage() {
+        document.getElementById('registerPage').classList.add('hidden');
+        document.getElementById('otpPage').classList.add('hidden');
+        document.getElementById('loginPage').classList.remove('hidden');
+        document.getElementById('appContainer').classList.remove('active');
+        
+        // Clear any alerts
+        document.getElementById('loginAlert').innerHTML = '';
+        
+        // Show toast if coming from registration
+        if (localStorage.getItem('pending_email')) {
+            showToast('Please verify your email first with the OTP sent', 'info');
+        }
+    }
+
+    // Show OTP Page
+    function showOTPPage(email) {
+        document.getElementById('registerPage').classList.add('hidden');
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('otpPage').classList.remove('hidden');
+        document.getElementById('appContainer').classList.remove('active');
+        
+        if (email) {
+            document.getElementById('otpEmail').textContent = email;
+            localStorage.setItem('pending_email', email);
+        }
+        
+        // Show username if available
+        const username = localStorage.getItem('pending_username');
+        if (username) {
+            const otpInfo = document.querySelector('.otp-info');
+            if (otpInfo) {
+                otpInfo.innerHTML = `We sent a verification code to <span id="otpEmail">${email}</span><br>Username: <strong>${username}</strong>`;
+            }
+        }
+        
+        // Clear any alerts
+        document.getElementById('otpAlert').innerHTML = '';
+        
+        // Clear OTP input
+        document.getElementById('otpCode').value = '';
+        
+        // Start resend timer
+        startResendTimer();
+    }
+
+    // Start resend timer
+    function startResendTimer() {
+        clearInterval(resendTimerInterval);
+        
+        let timeLeft = 60;
+        const timerElement = document.getElementById('resendTimer');
+        const countdownElement = document.getElementById('countdown');
+        const resendBtn = document.getElementById('resendBtn');
+        
+        if (!timerElement || !countdownElement || !resendBtn) return;
+        
+        resendBtn.disabled = true;
+        timerElement.style.display = 'block';
+        countdownElement.textContent = timeLeft;
+        
+        resendTimerInterval = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(resendTimerInterval);
+                resendBtn.disabled = false;
+                timerElement.style.display = 'none';
+            }
+        }, 1000);
+    }
+
+    function showApp() {
+        // Hide ALL auth pages
+        document.getElementById('registerPage').classList.add('hidden');
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('otpPage').classList.add('hidden');
+        
+        // Show app container
+        document.getElementById('appContainer').classList.add('active');
+        
+        // Remove any auth alerts
+        document.getElementById('registerAlert').innerHTML = '';
+        document.getElementById('loginAlert').innerHTML = '';
+        document.getElementById('otpAlert').innerHTML = '';
+        
+        // Reset forms
+        document.getElementById('registerForm').reset();
+        document.getElementById('loginForm').reset();
+        document.getElementById('otpForm').reset();
+        
+        // Clear any pending timers
+        clearInterval(resendTimerInterval);
+    }
+
+    // Registration
+    document.getElementById('registerForm').onsubmit = async function(e) {
+        e.preventDefault();
+
+        const password = document.getElementById('regPassword').value;
+        const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+        if (password !== confirmPassword) {
+            showAlert('registerAlert', 'Passwords do not match', 'error');
+            return;
+        }
+
+        if (password.length < 8) {
+            showAlert('registerAlert', 'Password must be at least 8 characters long', 'error');
+            return;
+        }
+
+        const data = {
+            email: document.getElementById('regEmail').value.trim(),
+            username: document.getElementById('regUsername').value.trim(),
+            full_name: document.getElementById('regFullName').value.trim(),
+            password: password,
+            date_of_birth: document.getElementById('regDob').value,
+            gender: document.getElementById('regGender').value || null,
+            bio: document.getElementById('regBio').value?.trim() || null
         };
 
-        // Helper Functions
-        function showAlert(elementId, message, type = 'success') {
-            const alertDiv = document.getElementById(elementId);
-            const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-            alertDiv.innerHTML = `<div class="alert alert-${type}"><i class="${icon}"></i>${message}</div>`;
-            setTimeout(() => alertDiv.innerHTML = '', 5000);
+        const btn = this.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            // FastAPI usually returns 422 for validation errors
+            if (response.status === 422) {
+                const errors = handleFastAPIError(response, result);
+                showAlert('registerAlert', errors, 'error');
+                return;
+            }
+
+            if (response.ok) {
+                // Store the email for OTP verification
+                localStorage.setItem('pending_email', data.email);
+                localStorage.setItem('pending_username', data.username);
+                
+                const successMsg = result.message || result.detail || 'Account created! OTP has been sent to your email.';
+                showAlert('registerAlert', successMsg, 'success');
+                showToast('Registration successful! Check email for OTP.', 'success');
+                
+                // Redirect to OTP page
+                setTimeout(() => showOTPPage(data.email), 1500);
+                
+            } else if (response.status === 400 || response.status === 409) {
+                const errorMsg = result.detail || result.message || 'Registration failed';
+                showAlert('registerAlert', errorMsg, 'error');
+            } else {
+                showAlert('registerAlert', result.detail || result.message || 'Registration failed', 'error');
+            }
+        } catch (error) {
+            console.error('Registration error:', error);
+            showAlert('registerAlert', 'Network error. Please check your connection.', 'error');
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    };
+
+    // Login
+    document.getElementById('loginForm').onsubmit = async function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+        const btn = this.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const result = await response.json();
+
+            // Handle validation errors
+            if (response.status === 422) {
+                const errors = handleFastAPIError(response, result);
+                showAlert('loginAlert', errors, 'error');
+                return;
+            }
+
+            if (response.ok) {
+                // Extract tokens from various FastAPI response structures
+                let access_token, refresh_token, user;
+                
+                if (result.access_token) {
+                    access_token = result.access_token;
+                    refresh_token = result.refresh_token || result.access_token;
+                    user = result.user || {};
+                } else if (result.data) {
+                    access_token = result.data.access_token;
+                    refresh_token = result.data.refresh_token;
+                    user = result.data.user || {};
+                } else if (result.token) {
+                    access_token = result.token;
+                    refresh_token = result.token;
+                    user = result.user || {};
+                } else {
+                    access_token = result?.tokens?.access_token;
+                    refresh_token = result?.tokens?.refresh_token;
+                    user = result?.user || {};
+                }
+                
+                if (!access_token) {
+                    throw new Error('No access token received');
+                }
+                
+                accessToken = access_token;
+                refreshToken = refresh_token;
+                currentUser = user;
+
+                localStorage.setItem('access_token', accessToken);
+                localStorage.setItem('refresh_token', refreshToken);
+                localStorage.setItem('user', JSON.stringify(currentUser));
+
+                showToast('Login successful! Welcome back!', 'success');
+                
+                setTimeout(() => {
+                    showApp();
+                    initApp();
+                }, 1000);
+            } else {
+                const errorMsg = result.detail || result.message || 'Invalid credentials';
+                showAlert('loginAlert', errorMsg, 'error');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            showAlert('loginAlert', 'Network error. Please try again.', 'error');
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    };
+
+    // OTP Verification
+    document.getElementById('otpForm').onsubmit = async function(e) {
+        e.preventDefault();
+        
+        const email = localStorage.getItem('pending_email');
+        const otp = document.getElementById('otpCode').value.trim();
+        
+        if (!email) {
+            showAlert('otpAlert', 'Session expired. Please register again.', 'error');
+            setTimeout(() => showRegisterPage(), 2000);
+            return;
+        }
+        
+        if (otp.length !== 6 || !/^\d{6}$/.test(otp)) {
+            showAlert('otpAlert', 'Please enter a valid 6-digit OTP', 'error');
+            return;
+        }
+        
+        const btn = this.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+        btn.disabled = true;
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}/auth/verify-otp`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, otp })
+            });
+            
+            const result = await response.json();
+            
+            // Handle FastAPI validation errors
+            if (response.status === 422) {
+                const errors = handleFastAPIError(response, result);
+                showAlert('otpAlert', errors, 'error');
+                btn.disabled = false;
+                return;
+            }
+            
+            if (response.ok) {
+                // Extract tokens from various FastAPI response structures
+                let access_token, refresh_token, user;
+                
+                if (result.access_token) {
+                    access_token = result.access_token;
+                    refresh_token = result.refresh_token || result.access_token;
+                    user = result.user || result.data || {};
+                } else if (result.data) {
+                    access_token = result.data.access_token;
+                    refresh_token = result.data.refresh_token;
+                    user = result.data.user || {};
+                } else if (result.token) {
+                    access_token = result.token;
+                    refresh_token = result.token;
+                    user = result.user || {};
+                } else {
+                    access_token = result?.tokens?.access_token || result?.access_token;
+                    refresh_token = result?.tokens?.refresh_token || result?.refresh_token;
+                    user = result?.user || result?.data || {};
+                }
+                
+                if (!access_token) {
+                    throw new Error('No access token received');
+                }
+                
+                accessToken = access_token;
+                refreshToken = refresh_token;
+                currentUser = user;
+                
+                // Store tokens and user
+                localStorage.setItem('access_token', accessToken);
+                localStorage.setItem('refresh_token', refreshToken);
+                localStorage.setItem('user', JSON.stringify(currentUser));
+                
+                // Clean up pending data
+                localStorage.removeItem('pending_email');
+                localStorage.removeItem('pending_username');
+                
+                showAlert('otpAlert', 'Account verified! Welcome to meiXuP!', 'success');
+                showToast('Account verified successfully!', 'success');
+                
+                // Hide OTP page and show app
+                document.getElementById('otpPage').classList.add('hidden');
+                document.getElementById('registerPage').classList.add('hidden');
+                document.getElementById('loginPage').classList.add('hidden');
+                
+                // Clear OTP form
+                document.getElementById('otpCode').value = '';
+                
+                // Show app
+                setTimeout(() => {
+                    showApp();
+                    initApp();
+                }, 500);
+                
+            } else {
+                const errorMsg = result.detail || result.message || 'Verification failed';
+                showAlert('otpAlert', errorMsg, 'error');
+                btn.disabled = false;
+            }
+        } catch (error) {
+            console.error('OTP verification error:', error);
+            showAlert('otpAlert', error.message || 'Network error', 'error');
+            btn.disabled = false;
+        } finally {
+            btn.innerHTML = originalText;
+        }
+    };
+
+    // Resend OTP
+    async function resendOTP() {
+        const email = localStorage.getItem('pending_email');
+        
+        if (!email) {
+            showAlert('otpAlert', 'No email found. Please register again.', 'error');
+            return;
+        }
+        
+        const resendBtn = document.getElementById('resendBtn');
+        const originalText = resendBtn.innerHTML;
+        resendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        resendBtn.disabled = true;
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}/auth/resend-otp`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                showAlert('otpAlert', 'New OTP sent to your email!', 'success');
+                showToast('New OTP sent. Check your email!', 'success');
+                startResendTimer(); // Reset timer
+            } else {
+                const errorMsg = result.detail || result.message || 'Failed to resend OTP';
+                showAlert('otpAlert', errorMsg, 'error');
+            }
+        } catch (error) {
+            showAlert('otpAlert', 'Network error. Please try again.', 'error');
+        } finally {
+            resendBtn.innerHTML = originalText;
+        }
+    }
+
+    // Google Login
+    async function googleLogin() {
+        if (!firebaseAuth) {
+            showToast('Firebase is not configured properly', 'error');
+            return;
         }
 
-        function showLoading(elementId, message = 'Loading...') {
-            const element = document.getElementById(elementId);
-            element.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>${message}</p>
-                </div>
-            `;
-        }
+        const btn = event.target;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+        btn.disabled = true;
 
-        function showEmptyState(elementId, icon = 'fas fa-inbox', title = 'Nothing here yet', message = 'Check back later!') {
-            const element = document.getElementById(elementId);
-            element.innerHTML = `
-                <div class="empty-state">
-                    <i class="${icon}"></i>
-                    <h3>${title}</h3>
-                    <p>${message}</p>
-                </div>
-            `;
-        }
+        try {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.addScope('profile');
+            provider.addScope('email');
 
-        // Page Navigation
-        function showRegisterPage() {
-            document.getElementById('registerPage').classList.remove('hidden');
-            document.getElementById('loginPage').classList.add('hidden');
-            document.getElementById('appContainer').classList.remove('active');
-        }
+            const result = await firebaseAuth.signInWithPopup(provider);
+            const idToken = await result.user.getIdToken();
 
-        function showLoginPage() {
+            const response = await fetch(`${API_BASE_URL}/auth/google`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id_token: idToken })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Extract tokens
+                let access_token, refresh_token, user;
+                
+                if (data.access_token) {
+                    access_token = data.access_token;
+                    refresh_token = data.refresh_token || data.access_token;
+                    user = data.user || {};
+                } else if (data.data) {
+                    access_token = data.data.access_token;
+                    refresh_token = data.data.refresh_token;
+                    user = data.data.user || {};
+                } else if (data.token) {
+                    access_token = data.token;
+                    refresh_token = data.token;
+                    user = data.user || {};
+                } else {
+                    access_token = data?.tokens?.access_token;
+                    refresh_token = data?.tokens?.refresh_token;
+                    user = data?.user || {};
+                }
+                
+                if (!access_token) {
+                    throw new Error('No access token received');
+                }
+                
+                accessToken = access_token;
+                refreshToken = refresh_token;
+                currentUser = user;
+
+                localStorage.setItem('access_token', accessToken);
+                localStorage.setItem('refresh_token', refreshToken);
+                localStorage.setItem('user', JSON.stringify(currentUser));
+
+                showToast('Google Sign-In successful!', 'success');
+                
+                setTimeout(() => {
+                    showApp();
+                    initApp();
+                }, 1000);
+            } else {
+                const errorMsg = data.detail || data.message || 'Google authentication failed';
+                showToast(errorMsg, 'error');
+            }
+        } catch (error) {
+            console.error('Google login error:', error);
+            showToast('Google Sign-In failed. Please try again.', 'error');
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    }
+
+    // Initialize App
+    async function initApp() {
+        try {
+            // Ensure all auth pages are hidden
             document.getElementById('registerPage').classList.add('hidden');
-            document.getElementById('loginPage').classList.remove('hidden');
-        }
-
-        function showApp() {
-            document.getElementById('registerPage').classList.add('hidden');
             document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('otpPage').classList.add('hidden');
             document.getElementById('appContainer').classList.add('active');
+            
+            updateUserProfile();
+            await loadFeed();
+            connectWebSocket();
+            await loadNotifications();
+            await loadSuggestedUsers();
+            
+            // Update badge counts
+            updateBadgeCounts();
+            
+            // Start periodic updates
+            setInterval(updateBadgeCounts, 30000);
+            
+        } catch (error) {
+            console.error('App initialization error:', error);
+            showToast('Failed to initialize app', 'error');
         }
+    }
 
-        // Registration
-        document.getElementById('registerForm').onsubmit = async function(e) {
-            e.preventDefault();
+    // Update User Profile Display
+    function updateUserProfile() {
+        if (!currentUser) return;
+        
+        const initial = currentUser.username ? currentUser.username[0].toUpperCase() : 'U';
+        document.getElementById('sidebarAvatar').textContent = initial;
+        document.getElementById('createPostAvatar').textContent = initial;
+        document.getElementById('profileAvatar').textContent = initial;
+        
+        document.getElementById('sidebarUsername').textContent = currentUser.username || 'Username';
+        document.getElementById('sidebarEmail').textContent = currentUser.email || 'email@example.com';
+        
+        document.getElementById('profileUsername').textContent = currentUser.username || 'Username';
+        document.getElementById('profileBio').textContent = currentUser.bio || 'No bio yet';
+        
+        // Update status indicator
+        document.getElementById('userStatus').style.background = '#10b981';
+    }
 
-            const password = document.getElementById('regPassword').value;
-            const confirmPassword = document.getElementById('regConfirmPassword').value;
+    // WebSocket Connection
+    function connectWebSocket() {
+        if (!currentUser.id) return;
 
-            if (password !== confirmPassword) {
-                showAlert('registerAlert', 'Passwords do not match', 'error');
-                return;
-            }
+        const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const wsUrl = `${wsProtocol}//${window.location.host.replace('8000', '8001')}/ws/${currentUser.id}`;
+        
+        websocket = new WebSocket(wsUrl);
 
-            if (password.length < 8) {
-                showAlert('registerAlert', 'Password must be at least 8 characters long', 'error');
-                return;
-            }
+        websocket.onopen = () => {
+            console.log('WebSocket connected');
+            showToast('Connected to real-time updates', 'success');
+        };
 
-            const data = {
-                email: document.getElementById('regEmail').value,
-                username: document.getElementById('regUsername').value,
-                full_name: document.getElementById('regFullName').value,
-                password: password,
-                date_of_birth: document.getElementById('regDob').value,
-                gender: document.getElementById('regGender').value || null,
-                bio: document.getElementById('regBio').value || null
-            };
-
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
-            btn.disabled = true;
-
+        websocket.onmessage = (event) => {
             try {
-                const response = await fetch(`${API_BASE_URL}/auth/register`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
+                const data = JSON.parse(event.data);
+                console.log('WebSocket message:', data);
 
-                const result = await response.json();
-
-                if (result.success) {
-                    showAlert('registerAlert', 'Account created! Please check your email for verification.', 'success');
-                    setTimeout(() => {
-                        document.getElementById('loginEmail').value = data.email;
-                        showLoginPage();
-                    }, 2000);
-                } else {
-                    showAlert('registerAlert', result.detail || 'Registration failed', 'error');
+                switch (data.type) {
+                    case 'message':
+                        handleIncomingMessage(data);
+                        break;
+                    case 'notification':
+                        handleIncomingNotification(data);
+                        break;
+                    case 'user_status':
+                        updateUserStatus(data.user_id, data.status);
+                        break;
+                    case 'post_like':
+                        updatePostLike(data.post_id, data.like_count, data.is_liked);
+                        break;
+                    case 'new_post':
+                        addNewPost(data.post);
+                        break;
                 }
             } catch (error) {
-                showAlert('registerAlert', 'Network error. Please try again.', 'error');
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
+                console.error('Error parsing WebSocket message:', error);
             }
         };
 
-        // Login
-        document.getElementById('loginForm').onsubmit = async function(e) {
-            e.preventDefault();
-
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
-            btn.disabled = true;
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/auth/login`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-
-                const result = await response.json();
-
-                if (result.success && result.access_token) {
-                    accessToken = result.access_token;
-                    refreshToken = result.refresh_token;
-                    currentUser = result.user;
-
-                    localStorage.setItem('access_token', accessToken);
-                    localStorage.setItem('refresh_token', refreshToken);
-                    localStorage.setItem('user', JSON.stringify(currentUser));
-
-                    showToast('Welcome back to meiXuP!', 'success');
-                    
-                    setTimeout(() => {
-                        showApp();
-                        initApp();
-                    }, 1000);
-                } else {
-                    showAlert('loginAlert', result.detail || 'Invalid credentials', 'error');
-                }
-            } catch (error) {
-                showAlert('loginAlert', 'Network error. Please try again.', 'error');
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
+        websocket.onerror = (error) => {
+            console.error('WebSocket error:', error);
         };
 
-        // Google Login
-        async function googleLogin() {
-            if (!firebaseAuth) {
-                showToast('Firebase is not configured properly', 'error');
-                return;
+        websocket.onclose = () => {
+            console.log('WebSocket disconnected');
+            // Reconnect after 5 seconds
+            setTimeout(connectWebSocket, 5000);
+        };
+    }
+
+    // Section Navigation
+    async function showSection(section) {
+        // Update nav items
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        // Hide all sections
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
+
+        // Show selected section
+        const sectionMap = {
+            'feed': 'feedSection',
+            'messages': 'messagesSection',
+            'dating': 'datingSection',
+            'notifications': 'notificationsSection',
+            'profile': 'profileSection',
+            'settings': 'settingsSection'
+        };
+
+        const titleMap = {
+            'feed': 'Exclusive Feed',
+            'messages': 'Premium Messages',
+            'dating': 'Exclusive Dating',
+            'notifications': 'Notifications',
+            'profile': 'My Profile',
+            'settings': 'Exclusive Settings'
+        };
+
+        document.getElementById(sectionMap[section]).classList.remove('hidden');
+        document.getElementById('contentTitle').textContent = titleMap[section];
+
+        // Load section data
+        try {
+            switch (section) {
+                case 'feed':
+                    await loadFeed();
+                    break;
+                case 'messages':
+                    await loadChats();
+                    break;
+                case 'dating':
+                    await loadDatingProfiles();
+                    break;
+                case 'notifications':
+                    await loadNotifications();
+                    break;
+                case 'profile':
+                    await loadProfile();
+                    break;
             }
+        } catch (error) {
+            console.error(`Error loading ${section}:`, error);
+            showToast(`Failed to load ${section}`, 'error');
+        }
+    }
 
-            const btn = event.target;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
-            btn.disabled = true;
-
-            try {
-                const provider = new firebase.auth.GoogleAuthProvider();
-                provider.addScope('profile');
-                provider.addScope('email');
-
-                const result = await firebaseAuth.signInWithPopup(provider);
-                const idToken = await result.user.getIdToken();
-
-                const response = await fetch(`${API_BASE_URL}/auth/google`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id_token: idToken })
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    accessToken = data.access_token;
-                    refreshToken = data.refresh_token;
-                    currentUser = data.user;
-
-                    localStorage.setItem('access_token', accessToken);
-                    localStorage.setItem('refresh_token', refreshToken);
-                    localStorage.setItem('user', JSON.stringify(currentUser));
-
-                    showToast('Google Sign-In successful!', 'success');
-                    
-                    setTimeout(() => {
-                        showApp();
-                        initApp();
-                    }, 1000);
-                } else {
-                    showToast(data.detail || 'Google authentication failed', 'error');
-                }
-            } catch (error) {
-                console.error('Google login error:', error);
-                showToast('Google Sign-In failed. Please try again.', 'error');
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
+    // Update badge counts
+    async function updateBadgeCounts() {
+        try {
+            // Get unread notifications count
+            const notifResponse = await makeAuthenticatedRequest('/notifications/unread-count');
+            if (notifResponse.ok) {
+                const notifData = await notifResponse.json();
+                const count = notifData.data || notifData.count || 0;
+                document.getElementById('unreadNotifications').textContent = count;
             }
-        }
-
-        // Initialize App
-        async function initApp() {
-            try {
-                showApp();
-                updateUserProfile();
-                await loadFeed();
-                connectWebSocket();
-                await loadNotifications();
-                await loadSuggestedUsers();
-                
-                // Update badge counts
-                updateBadgeCounts();
-                
-                // Start periodic updates
-                setInterval(updateBadgeCounts, 30000); // Update every 30 seconds
-                
-            } catch (error) {
-                console.error('App initialization error:', error);
-                showToast('Failed to initialize app', 'error');
+            
+            // Get unread messages count
+            const msgResponse = await makeAuthenticatedRequest('/messages/unread-count');
+            if (msgResponse.ok) {
+                const msgData = await msgResponse.json();
+                const count = msgData.data || msgData.count || 0;
+                document.getElementById('unreadMessages').textContent = count;
             }
+        } catch (error) {
+            console.error('Error updating badge counts:', error);
         }
+    }
 
-        // Update badge counts
-        async function updateBadgeCounts() {
-            try {
-                // Get unread notifications count
-                const notifResponse = await fetch(`${API_BASE_URL}/notifications/unread-count`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-                
-                if (notifResponse.ok) {
-                    const notifData = await notifResponse.json();
-                    if (notifData.success) {
-                        document.getElementById('unreadNotifications').textContent = notifData.count || 0;
-                    }
-                }
-                
-                // Get unread messages count
-                const msgResponse = await fetch(`${API_BASE_URL}/messages/unread-count`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-                
-                if (msgResponse.ok) {
-                    const msgData = await msgResponse.json();
-                    if (msgData.success) {
-                        document.getElementById('unreadMessages').textContent = msgData.count || 0;
-                    }
-                }
-            } catch (error) {
-                console.error('Error updating badge counts:', error);
-            }
-        }
+    // Load suggested users
+    async function loadSuggestedUsers() {
+        try {
+            const response = await makeAuthenticatedRequest('/users/suggested');
+            const result = await response.json();
 
-        // Update User Profile Display
-        function updateUserProfile() {
-            if (!currentUser) return;
-            
-            const initial = currentUser.username ? currentUser.username[0].toUpperCase() : 'U';
-            document.getElementById('sidebarAvatar').textContent = initial;
-            document.getElementById('createPostAvatar').textContent = initial;
-            document.getElementById('profileAvatar').textContent = initial;
-            
-            document.getElementById('sidebarUsername').textContent = currentUser.username || 'Username';
-            document.getElementById('sidebarEmail').textContent = currentUser.email || 'email@example.com';
-            
-            document.getElementById('profileUsername').textContent = currentUser.username || 'Username';
-            document.getElementById('profileBio').textContent = currentUser.bio || 'No bio yet';
-            
-            // Update status indicator
-            document.getElementById('userStatus').style.background = '#10b981';
-        }
-
-        // WebSocket Connection
-        function connectWebSocket() {
-            if (!currentUser.id) return;
-
-            const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsUrl = `${wsProtocol}//${window.location.host.replace('8000', '8001')}/ws/${currentUser.id}`;
-            
-            websocket = new WebSocket(wsUrl);
-
-            websocket.onopen = () => {
-                console.log('WebSocket connected');
-                showToast('Connected to real-time updates', 'success');
-            };
-
-            websocket.onmessage = (event) => {
-                try {
-                    const data = JSON.parse(event.data);
-                    console.log('WebSocket message:', data);
-
-                    switch (data.type) {
-                        case 'message':
-                            handleIncomingMessage(data);
-                            break;
-                        case 'notification':
-                            handleIncomingNotification(data);
-                            break;
-                        case 'user_status':
-                            updateUserStatus(data.user_id, data.status);
-                            break;
-                        case 'post_like':
-                            updatePostLike(data.post_id, data.like_count, data.is_liked);
-                            break;
-                        case 'new_post':
-                            addNewPost(data.post);
-                            break;
-                    }
-                } catch (error) {
-                    console.error('Error parsing WebSocket message:', error);
-                }
-            };
-
-            websocket.onerror = (error) => {
-                console.error('WebSocket error:', error);
-            };
-
-            websocket.onclose = () => {
-                console.log('WebSocket disconnected');
-                // Reconnect after 5 seconds
-                setTimeout(connectWebSocket, 5000);
-            };
-        }
-
-        // Section Navigation
-        async function showSection(section) {
-            // Update nav items
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
-
-            // Show selected section
-            const sectionMap = {
-                'feed': 'feedSection',
-                'messages': 'messagesSection',
-                'dating': 'datingSection',
-                'notifications': 'notificationsSection',
-                'profile': 'profileSection',
-                'settings': 'settingsSection'
-            };
-
-            const titleMap = {
-                'feed': 'Exclusive Feed',
-                'messages': 'Premium Messages',
-                'dating': 'Exclusive Dating',
-                'notifications': 'Notifications',
-                'profile': 'My Profile',
-                'settings': 'Exclusive Settings'
-            };
-
-            document.getElementById(sectionMap[section]).classList.remove('hidden');
-            document.getElementById('contentTitle').textContent = titleMap[section];
-
-            // Load section data
-            try {
-                switch (section) {
-                    case 'feed':
-                        await loadFeed();
-                        break;
-                    case 'messages':
-                        await loadChats();
-                        break;
-                    case 'dating':
-                        await loadDatingProfiles();
-                        break;
-                    case 'notifications':
-                        await loadNotifications();
-                        break;
-                    case 'profile':
-                        await loadProfile();
-                        break;
-                }
-            } catch (error) {
-                console.error(`Error loading ${section}:`, error);
-                showToast(`Failed to load ${section}`, 'error');
-            }
-        }
-
-        // Load suggested users
-        async function loadSuggestedUsers() {
-            try {
-                const response = await fetch(`${API_BASE_URL}/users/suggested`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-
-                const result = await response.json();
-
-                if (result.success && result.users.length > 0) {
+            if (response.ok) {
+                const users = result.data || result.users || [];
+                if (users.length > 0) {
                     const container = document.getElementById('suggestedUsers');
-                    container.innerHTML = result.users.map(user => `
+                    container.innerHTML = users.map(user => `
                         <div class="suggested-user">
                             <div class="user-avatar">${user.username[0].toUpperCase()}</div>
                             <div class="user-info">
@@ -2670,960 +3180,986 @@
                         </div>
                     `).join('');
                 }
-            } catch (error) {
-                console.error('Error loading suggested users:', error);
             }
+        } catch (error) {
+            console.error('Error loading suggested users:', error);
         }
+    }
 
-        // Follow user
-        async function followUser(userId) {
-            try {
-                const response = await fetch(`${API_BASE_URL}/users/${userId}/follow`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
+    // Follow user
+    async function followUser(userId) {
+        try {
+            const response = await makeAuthenticatedRequest(`/users/${userId}/follow`, {
+                method: 'POST'
+            });
 
-                const result = await response.json();
-                
-                if (result.success) {
-                    showToast('User followed successfully!', 'success');
-                    loadSuggestedUsers();
-                }
-            } catch (error) {
-                console.error('Error following user:', error);
-                showToast('Failed to follow user', 'error');
-            }
-        }
-
-        // Feed Functions
-        async function loadFeed() {
-            showLoading('feedPosts', 'Loading exclusive feed...');
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/feed?page=1&limit=20`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    if (result.posts.length === 0) {
-                        showEmptyState('feedPosts', 'fas fa-newspaper', 'No posts yet', 'Be the first to post in your network!');
-                    } else {
-                        displayPosts(result.posts);
-                    }
-                } else {
-                    showEmptyState('feedPosts', 'fas fa-exclamation-circle', 'Failed to load feed', 'Please try again later');
-                }
-            } catch (error) {
-                console.error('Error loading feed:', error);
-                showEmptyState('feedPosts', 'fas fa-wifi-slash', 'Network error', 'Check your connection and try again');
-            }
-        }
-
-        function displayPosts(posts) {
-            const feedPosts = document.getElementById('feedPosts');
+            const result = await response.json();
             
-            feedPosts.innerHTML = posts.map(post => `
-                <div class="post-card" id="post-${post.id}">
-                    <div class="post-header">
-                        <div class="post-avatar">
-                            ${post.user_username ? post.user_username[0].toUpperCase() : 'U'}
-                            ${post.user_is_verified ? '<div class="verified-badge"><i class="fas fa-check"></i></div>' : ''}
-                        </div>
-                        <div class="post-user-info">
-                            <h4>
-                                ${post.user_username || 'Anonymous'}
-                                <span class="post-time">• ${formatTimeAgo(post.created_at)}</span>
-                            </h4>
-                            <p>${post.user_location || 'Worldwide'}</p>
-                        </div>
-                        <div class="post-options">
-                            <button class="post-options-btn">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                            <div class="post-options-menu">
-                                <div class="post-option-item" onclick="sharePost(${post.id})">
-                                    <i class="fas fa-share"></i> Share
-                                </div>
-                                <div class="post-option-item" onclick="savePost(${post.id})">
-                                    <i class="fas fa-bookmark"></i> Save
-                                </div>
-                                <div class="post-option-item" onclick="reportPost(${post.id})">
-                                    <i class="fas fa-flag"></i> Report
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <p>${post.content || ''}</p>
-                        ${post.media_url ? `
-                            <div class="post-media">
-                                <img src="${API_BASE_URL}/media/${post.media_url}" alt="Post media">
-                            </div>
-                        ` : ''}
-                    </div>
-                    <div class="post-stats">
-                        <div class="post-stat">
-                            <i class="fas fa-heart"></i>
-                            <span id="like-count-${post.id}">${post.likes_count || 0}</span>
-                        </div>
-                        <div class="post-stat">
-                            <i class="fas fa-comment"></i>
-                            <span>${post.comments_count || 0}</span>
-                        </div>
-                        <div class="post-stat">
-                            <i class="fas fa-share"></i>
-                            <span>${post.shares_count || 0}</span>
-                        </div>
-                    </div>
-                    <div class="post-actions-row">
-                        <button class="post-action ${post.is_liked ? 'active' : ''}" onclick="likePost(${post.id})">
-                            <i class="fas fa-heart"></i> Like
-                        </button>
-                        <button class="post-action" onclick="focusComment(${post.id})">
-                            <i class="fas fa-comment"></i> Comment
-                        </button>
-                        <button class="post-action" onclick="sharePost(${post.id})">
-                            <i class="fas fa-share"></i> Share
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function formatTimeAgo(dateString) {
-            const date = new Date(dateString);
-            const now = new Date();
-            const diffMs = now - date;
-            const diffMins = Math.floor(diffMs / 60000);
-            const diffHours = Math.floor(diffMs / 3600000);
-            const diffDays = Math.floor(diffMs / 86400000);
-
-            if (diffMins < 60) {
-                return diffMins === 0 ? 'just now' : `${diffMins}m ago`;
-            } else if (diffHours < 24) {
-                return `${diffHours}h ago`;
-            } else if (diffDays < 7) {
-                return `${diffDays}d ago`;
+            if (response.ok) {
+                showToast('User followed successfully!', 'success');
+                loadSuggestedUsers();
             } else {
-                return date.toLocaleDateString();
+                const errorMsg = handleFastAPIError(response, result);
+                showToast(errorMsg, 'error');
             }
+        } catch (error) {
+            console.error('Error following user:', error);
+            showToast('Failed to follow user', 'error');
         }
+    }
 
-        async function likePost(postId) {
-            try {
-                const response = await fetch(`${API_BASE_URL}/posts/${postId}/like`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
+    // Feed Functions
+    async function loadFeed() {
+        showLoading('feedPosts', 'Loading exclusive feed...');
 
-                const result = await response.json();
-                
-                if (result.success) {
-                    const likeBtn = document.querySelector(`#post-${postId} .post-action`);
-                    const likeCount = document.getElementById(`like-count-${postId}`);
-                    
-                    if (result.is_liked) {
-                        likeBtn.classList.add('active');
-                        likeBtn.innerHTML = '<i class="fas fa-heart"></i> Liked';
-                        likeCount.textContent = parseInt(likeCount.textContent) + 1;
-                    } else {
-                        likeBtn.classList.remove('active');
-                        likeBtn.innerHTML = '<i class="fas fa-heart"></i> Like';
-                        likeCount.textContent = parseInt(likeCount.textContent) - 1;
-                    }
+        try {
+            const response = await makeAuthenticatedRequest('/feed?page=1&limit=20');
+            const result = await response.json();
+
+            if (response.ok) {
+                const posts = result.data || result.posts || [];
+                if (posts.length === 0) {
+                    showEmptyState('feedPosts', 'fas fa-newspaper', 'No posts yet', 'Be the first to post in your network!');
+                } else {
+                    displayPosts(posts);
                 }
-            } catch (error) {
-                console.error('Error liking post:', error);
-                showToast('Failed to like post', 'error');
-            }
-        }
-
-        // Add new post via WebSocket
-        function addNewPost(post) {
-            const feedPosts = document.getElementById('feedPosts');
-            if (feedPosts.children.length > 0) {
-                const firstPost = feedPosts.firstElementChild;
-                feedPosts.insertBefore(createPostElement(post), firstPost);
             } else {
-                feedPosts.appendChild(createPostElement(post));
+                const errorMsg = handleFastAPIError(response, result);
+                showEmptyState('feedPosts', 'fas fa-exclamation-circle', 'Failed to load feed', errorMsg);
             }
+        } catch (error) {
+            console.error('Error loading feed:', error);
+            showEmptyState('feedPosts', 'fas fa-wifi-slash', 'Network error', 'Check your connection and try again');
         }
+    }
 
-        function createPostElement(post) {
-            const div = document.createElement('div');
-            div.className = 'post-card';
-            div.id = `post-${post.id}`;
-            div.innerHTML = `
+    function displayPosts(posts) {
+        const feedPosts = document.getElementById('feedPosts');
+        
+        feedPosts.innerHTML = posts.map(post => `
+            <div class="post-card" id="post-${post.id}">
                 <div class="post-header">
                     <div class="post-avatar">
                         ${post.user_username ? post.user_username[0].toUpperCase() : 'U'}
+                        ${post.user_is_verified ? '<div class="verified-badge"><i class="fas fa-check"></i></div>' : ''}
                     </div>
                     <div class="post-user-info">
                         <h4>
                             ${post.user_username || 'Anonymous'}
-                            <span class="post-time">• just now</span>
+                            <span class="post-time">• ${formatTimeAgo(post.created_at)}</span>
                         </h4>
+                        <p>${post.user_location || 'Worldwide'}</p>
+                    </div>
+                    <div class="post-options">
+                        <button class="post-options-btn">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                        <div class="post-options-menu">
+                            <div class="post-option-item" onclick="sharePost(${post.id})">
+                                <i class="fas fa-share"></i> Share
+                            </div>
+                            <div class="post-option-item" onclick="savePost(${post.id})">
+                                <i class="fas fa-bookmark"></i> Save
+                            </div>
+                            <div class="post-option-item" onclick="reportPost(${post.id})">
+                                <i class="fas fa-flag"></i> Report
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="post-content">
                     <p>${post.content || ''}</p>
+                    ${post.media_url ? `
+                        <div class="post-media">
+                            <img src="${API_BASE_URL}/media/${post.media_url}" alt="Post media">
+                        </div>
+                    ` : ''}
                 </div>
                 <div class="post-stats">
                     <div class="post-stat">
                         <i class="fas fa-heart"></i>
-                        <span id="like-count-${post.id}">0</span>
+                        <span id="like-count-${post.id}">${post.likes_count || 0}</span>
                     </div>
                     <div class="post-stat">
                         <i class="fas fa-comment"></i>
-                        <span>0</span>
+                        <span>${post.comments_count || 0}</span>
+                    </div>
+                    <div class="post-stat">
+                        <i class="fas fa-share"></i>
+                        <span>${post.shares_count || 0}</span>
                     </div>
                 </div>
                 <div class="post-actions-row">
-                    <button class="post-action" onclick="likePost(${post.id})">
+                    <button class="post-action ${post.is_liked ? 'active' : ''}" onclick="likePost(${post.id})">
                         <i class="fas fa-heart"></i> Like
                     </button>
                     <button class="post-action" onclick="focusComment(${post.id})">
                         <i class="fas fa-comment"></i> Comment
                     </button>
+                    <button class="post-action" onclick="sharePost(${post.id})">
+                        <i class="fas fa-share"></i> Share
+                    </button>
                 </div>
-            `;
-            return div;
-        }
+            </div>
+        `).join('');
+    }
 
-        // Create Post
-        async function createPost() {
-            const content = document.getElementById('postContent').value.trim();
+    function formatTimeAgo(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffMins = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMs / 3600000);
+        const diffDays = Math.floor(diffMs / 86400000);
+
+        if (diffMins < 60) {
+            return diffMins === 0 ? 'just now' : `${diffMins}m ago`;
+        } else if (diffHours < 24) {
+            return `${diffHours}h ago`;
+        } else if (diffDays < 7) {
+            return `${diffDays}d ago`;
+        } else {
+            return date.toLocaleDateString();
+        }
+    }
+
+    async function likePost(postId) {
+        try {
+            const response = await makeAuthenticatedRequest(`/posts/${postId}/like`, {
+                method: 'POST'
+            });
+
+            const result = await response.json();
             
-            if (!content && !selectedPostMedia) {
-                showToast('Please write something or add media', 'error');
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append('content', content);
-            formData.append('post_type', 'post');
-            if (selectedPostMedia) {
-                formData.append('media', selectedPostMedia);
-            }
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/posts`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${accessToken}` },
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    document.getElementById('postContent').value = '';
-                    document.getElementById('postMediaPreview').innerHTML = '';
-                    selectedPostMedia = null;
-                    
-                    showToast('Post created successfully!', 'success');
-                    
-                    // Reload feed after a short delay
-                    setTimeout(loadFeed, 1000);
+            if (response.ok) {
+                const likeBtn = document.querySelector(`#post-${postId} .post-action`);
+                const likeCount = document.getElementById(`like-count-${postId}`);
+                
+                if (result.is_liked) {
+                    likeBtn.classList.add('active');
+                    likeBtn.innerHTML = '<i class="fas fa-heart"></i> Liked';
+                    likeCount.textContent = parseInt(likeCount.textContent) + 1;
+                } else {
+                    likeBtn.classList.remove('active');
+                    likeBtn.innerHTML = '<i class="fas fa-heart"></i> Like';
+                    likeCount.textContent = parseInt(likeCount.textContent) - 1;
                 }
-            } catch (error) {
-                console.error('Error creating post:', error);
-                showToast('Failed to create post', 'error');
             }
+        } catch (error) {
+            console.error('Error liking post:', error);
+            showToast('Failed to like post', 'error');
         }
+    }
 
-        // Load Chats
-        async function loadChats() {
-            showLoading('chatList', 'Loading conversations...');
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/messages/conversations`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    if (result.conversations.length === 0) {
-                        showEmptyState('chatList', 'fas fa-comments', 'No conversations', 'Start a new conversation!');
-                    } else {
-                        displayChats(result.conversations);
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading chats:', error);
-                showEmptyState('chatList', 'fas fa-exclamation-circle', 'Failed to load', 'Please try again');
-            }
+    // Add new post via WebSocket
+    function addNewPost(post) {
+        const feedPosts = document.getElementById('feedPosts');
+        if (feedPosts.children.length > 0) {
+            const firstPost = feedPosts.firstElementChild;
+            feedPosts.insertBefore(createPostElement(post), firstPost);
+        } else {
+            feedPosts.appendChild(createPostElement(post));
         }
+    }
 
-        function displayChats(conversations) {
-            const chatList = document.getElementById('chatList');
-            
-            chatList.innerHTML = conversations.map(conv => `
-                <div class="chat-item ${currentChatUserId === conv.user_id ? 'active' : ''}" onclick="openChat(${conv.user_id}, '${conv.username}')">
-                    <div class="chat-avatar">
-                        ${conv.username[0].toUpperCase()}
-                        ${conv.is_online ? '<div class="online-indicator"></div>' : ''}
-                    </div>
-                    <div class="chat-info">
-                        <h4>${conv.username}</h4>
-                        <p>${conv.last_message ? conv.last_message.content.substring(0, 30) + '...' : 'No messages yet'}</p>
-                    </div>
-                    <div class="chat-meta">
-                        <div class="chat-time">${conv.last_message ? formatTimeAgo(conv.last_message.created_at) : ''}</div>
-                        ${conv.unread_count > 0 ? `<div class="unread-count">${conv.unread_count}</div>` : ''}
-                    </div>
+    function createPostElement(post) {
+        const div = document.createElement('div');
+        div.className = 'post-card';
+        div.id = `post-${post.id}`;
+        div.innerHTML = `
+            <div class="post-header">
+                <div class="post-avatar">
+                    ${post.user_username ? post.user_username[0].toUpperCase() : 'U'}
                 </div>
-            `).join('');
+                <div class="post-user-info">
+                    <h4>
+                        ${post.user_username || 'Anonymous'}
+                        <span class="post-time">• just now</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>${post.content || ''}</p>
+            </div>
+            <div class="post-stats">
+                <div class="post-stat">
+                    <i class="fas fa-heart"></i>
+                    <span id="like-count-${post.id}">0</span>
+                </div>
+                <div class="post-stat">
+                    <i class="fas fa-comment"></i>
+                    <span>0</span>
+                </div>
+            </div>
+            <div class="post-actions-row">
+                <button class="post-action" onclick="likePost(${post.id})">
+                    <i class="fas fa-heart"></i> Like
+                </button>
+                <button class="post-action" onclick="focusComment(${post.id})">
+                    <i class="fas fa-comment"></i> Comment
+                </button>
+            </div>
+        `;
+        return div;
+    }
+
+    // Create Post
+    async function createPost() {
+        const content = document.getElementById('postContent').value.trim();
+        
+        if (!content && !selectedPostMedia) {
+            showToast('Please write something or add media', 'error');
+            return;
         }
 
-        // Open Chat
-        async function openChat(userId, username) {
-            currentChatUserId = userId;
-            
-            // Update chat header
-            document.getElementById('chatHeader').innerHTML = `
-                <div class="chat-avatar">${username[0].toUpperCase()}</div>
+        const formData = new FormData();
+        formData.append('content', content);
+        formData.append('post_type', 'post');
+        if (selectedPostMedia) {
+            formData.append('media', selectedPostMedia);
+        }
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/posts`, {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${accessToken}` },
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                document.getElementById('postContent').value = '';
+                document.getElementById('postMediaPreview').innerHTML = '';
+                selectedPostMedia = null;
+                
+                showToast('Post created successfully!', 'success');
+                
+                // Reload feed after a short delay
+                setTimeout(loadFeed, 1000);
+            } else {
+                const errorMsg = handleFastAPIError(response, result);
+                showToast(errorMsg, 'error');
+            }
+        } catch (error) {
+            console.error('Error creating post:', error);
+            showToast('Failed to create post', 'error');
+        }
+    }
+
+    // Load Chats
+    async function loadChats() {
+        showLoading('chatList', 'Loading conversations...');
+
+        try {
+            const response = await makeAuthenticatedRequest('/messages/conversations');
+            const result = await response.json();
+
+            if (response.ok) {
+                const conversations = result.data || result.conversations || [];
+                if (conversations.length === 0) {
+                    showEmptyState('chatList', 'fas fa-comments', 'No conversations', 'Start a new conversation!');
+                } else {
+                    displayChats(conversations);
+                }
+            } else {
+                const errorMsg = handleFastAPIError(response, result);
+                showEmptyState('chatList', 'fas fa-exclamation-circle', 'Failed to load', errorMsg);
+            }
+        } catch (error) {
+            console.error('Error loading chats:', error);
+            showEmptyState('chatList', 'fas fa-exclamation-circle', 'Failed to load', 'Please try again');
+        }
+    }
+
+    function displayChats(conversations) {
+        const chatList = document.getElementById('chatList');
+        
+        chatList.innerHTML = conversations.map(conv => `
+            <div class="chat-item ${currentChatUserId === conv.user_id ? 'active' : ''}" onclick="openChat(${conv.user_id}, '${conv.username}')">
+                <div class="chat-avatar">
+                    ${conv.username[0].toUpperCase()}
+                    ${conv.is_online ? '<div class="online-indicator"></div>' : ''}
+                </div>
                 <div class="chat-info">
-                    <h4>${username}</h4>
-                    <p>Online</p>
+                    <h4>${conv.username}</h4>
+                    <p>${conv.last_message ? conv.last_message.content.substring(0, 30) + '...' : 'No messages yet'}</p>
+                </div>
+                <div class="chat-meta">
+                    <div class="chat-time">${conv.last_message ? formatTimeAgo(conv.last_message.created_at) : ''}</div>
+                    ${conv.unread_count > 0 ? `<div class="unread-count">${conv.unread_count}</div>` : ''}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Open Chat
+    async function openChat(userId, username) {
+        currentChatUserId = userId;
+        
+        // Update chat header
+        document.getElementById('chatHeader').innerHTML = `
+            <div class="chat-avatar">${username[0].toUpperCase()}</div>
+            <div class="chat-info">
+                <h4>${username}</h4>
+                <p>Online</p>
+            </div>
+        `;
+        
+        // Show message input
+        document.getElementById('chatInputContainer').style.display = 'block';
+        
+        // Load messages
+        await loadMessages(userId);
+        
+        // Mark as read
+        await markMessagesAsRead(userId);
+        
+        // Update chat list active state
+        document.querySelectorAll('.chat-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        event.currentTarget.classList.add('active');
+    }
+
+    // Load Messages
+    async function loadMessages(userId) {
+        showLoading('chatMessages', 'Loading messages...');
+
+        try {
+            const response = await makeAuthenticatedRequest(`/messages/${userId}`);
+            const result = await response.json();
+
+            if (response.ok) {
+                const messages = result.data || result.messages || [];
+                if (messages.length === 0) {
+                    showEmptyState('chatMessages', 'fas fa-comment', 'No messages yet', 'Send the first message!');
+                } else {
+                    displayMessages(messages);
+                }
+            } else {
+                const errorMsg = handleFastAPIError(response, result);
+                showEmptyState('chatMessages', 'fas fa-exclamation-circle', 'Failed to load', errorMsg);
+            }
+        } catch (error) {
+            console.error('Error loading messages:', error);
+            showEmptyState('chatMessages', 'fas fa-exclamation-circle', 'Failed to load', 'Please try again');
+        }
+    }
+
+    function displayMessages(messages) {
+        const chatMessages = document.getElementById('chatMessages');
+        
+        chatMessages.innerHTML = messages.map(msg => `
+            <div class="message ${msg.sender_id === currentUser.id ? 'sent' : ''}">
+                <div class="message-avatar">
+                    ${msg.sender_id === currentUser.id ? currentUser.username[0].toUpperCase() : '?'}
+                </div>
+                <div class="message-content">
+                    <div class="message-text">${msg.content}</div>
+                    <div class="message-time">${new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                </div>
+            </div>
+        `).join('');
+        
+        // Scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Mark messages as read
+    async function markMessagesAsRead(userId) {
+        try {
+            await makeAuthenticatedRequest(`/messages/${userId}/read`, {
+                method: 'POST'
+            });
+            
+            // Update badge counts
+            updateBadgeCounts();
+        } catch (error) {
+            console.error('Error marking messages as read:', error);
+        }
+    }
+
+    // Handle incoming message
+    function handleIncomingMessage(data) {
+        if (data.sender_id === currentChatUserId) {
+            // Add message to current chat
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${data.sender_username[0].toUpperCase()}</div>
+                <div class="message-content">
+                    <div class="message-text">${data.content}</div>
+                    <div class="message-time">just now</div>
                 </div>
             `;
-            
-            // Show message input
-            document.getElementById('chatInputContainer').style.display = 'block';
-            
-            // Load messages
-            await loadMessages(userId);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
             
             // Mark as read
-            await markMessagesAsRead(userId);
-            
-            // Update chat list active state
-            document.querySelectorAll('.chat-item').forEach(item => {
-                item.classList.remove('active');
+            markMessagesAsRead(data.sender_id);
+        }
+        
+        // Update badge counts
+        updateBadgeCounts();
+    }
+
+    // Send Message
+    async function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const content = input.value.trim();
+
+        if (!content || !currentChatUserId) {
+            showToast('Please enter a message', 'error');
+            return;
+        }
+
+        try {
+            const response = await makeAuthenticatedRequest('/messages', {
+                method: 'POST',
+                body: JSON.stringify({
+                    receiver_id: currentChatUserId,
+                    content: content,
+                    message_type: 'text'
+                })
             });
-            event.currentTarget.classList.add('active');
-        }
 
-        // Load Messages
-        async function loadMessages(userId) {
-            showLoading('chatMessages', 'Loading messages...');
+            const result = await response.json();
 
-            try {
-                const response = await fetch(`${API_BASE_URL}/messages/${userId}`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    if (result.messages.length === 0) {
-                        showEmptyState('chatMessages', 'fas fa-comment', 'No messages yet', 'Send the first message!');
-                    } else {
-                        displayMessages(result.messages);
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading messages:', error);
-                showEmptyState('chatMessages', 'fas fa-exclamation-circle', 'Failed to load', 'Please try again');
-            }
-        }
-
-        function displayMessages(messages) {
-            const chatMessages = document.getElementById('chatMessages');
-            
-            chatMessages.innerHTML = messages.map(msg => `
-                <div class="message ${msg.sender_id === currentUser.id ? 'sent' : ''}">
-                    <div class="message-avatar">
-                        ${msg.sender_id === currentUser.id ? currentUser.username[0].toUpperCase() : '?'}
-                    </div>
-                    <div class="message-content">
-                        <div class="message-text">${msg.content}</div>
-                        <div class="message-time">${new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
-                    </div>
-                </div>
-            `).join('');
-            
-            // Scroll to bottom
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Mark messages as read
-        async function markMessagesAsRead(userId) {
-            try {
-                await fetch(`${API_BASE_URL}/messages/${userId}/read`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-                
-                // Update badge counts
-                updateBadgeCounts();
-            } catch (error) {
-                console.error('Error marking messages as read:', error);
-            }
-        }
-
-        // Handle incoming message
-        function handleIncomingMessage(data) {
-            if (data.sender_id === currentChatUserId) {
-                // Add message to current chat
+            if (response.ok) {
+                // Add message to UI
                 const chatMessages = document.getElementById('chatMessages');
                 const messageDiv = document.createElement('div');
-                messageDiv.className = 'message';
+                messageDiv.className = 'message sent';
                 messageDiv.innerHTML = `
-                    <div class="message-avatar">${data.sender_username[0].toUpperCase()}</div>
+                    <div class="message-avatar">${currentUser.username[0].toUpperCase()}</div>
                     <div class="message-content">
-                        <div class="message-text">${data.content}</div>
+                        <div class="message-text">${content}</div>
                         <div class="message-time">just now</div>
                     </div>
                 `;
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
                 
-                // Mark as read
-                markMessagesAsRead(data.sender_id);
-            }
-            
-            // Update badge counts
-            updateBadgeCounts();
-        }
-
-        // Send Message
-        async function sendMessage() {
-            const input = document.getElementById('messageInput');
-            const content = input.value.trim();
-
-            if (!content || !currentChatUserId) {
-                showToast('Please enter a message', 'error');
-                return;
-            }
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/messages`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        receiver_id: currentChatUserId,
-                        content: content,
-                        message_type: 'text'
-                    })
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    // Add message to UI
-                    const chatMessages = document.getElementById('chatMessages');
-                    const messageDiv = document.createElement('div');
-                    messageDiv.className = 'message sent';
-                    messageDiv.innerHTML = `
-                        <div class="message-avatar">${currentUser.username[0].toUpperCase()}</div>
-                        <div class="message-content">
-                            <div class="message-text">${content}</div>
-                            <div class="message-time">just now</div>
-                        </div>
-                    `;
-                    chatMessages.appendChild(messageDiv);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                    
-                    input.value = '';
-                    
-                    // Show toast
-                    showToast('Message sent', 'success');
-                }
-            } catch (error) {
-                console.error('Error sending message:', error);
-                showToast('Failed to send message', 'error');
-            }
-        }
-
-        // Dating Functions
-        async function loadDatingProfiles() {
-            try {
-                const response = await fetch(`${API_BASE_URL}/dating/discover?limit=10`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    datingProfiles = result.profiles;
-                    currentDatingIndex = 0;
-                    
-                    if (datingProfiles.length === 0) {
-                        showEmptyState('datingCard', 'fas fa-user-friends', 'No profiles found', 'Check back later for new connections!');
-                    } else {
-                        showDatingProfile();
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading dating profiles:', error);
-                showEmptyState('datingCard', 'fas fa-exclamation-circle', 'Failed to load', 'Please try again');
-            }
-        }
-
-        function showDatingProfile() {
-            if (currentDatingIndex >= datingProfiles.length) {
-                loadDatingProfiles(); // Load more profiles
-                return;
-            }
-
-            const profile = datingProfiles[currentDatingIndex];
-            
-            // Calculate age from date of birth
-            const age = profile.date_of_birth ? 
-                Math.floor((new Date() - new Date(profile.date_of_birth)) / 31557600000) : 'N/A';
-            
-            document.getElementById('datingName').textContent = `${profile.full_name || profile.username}, ${age}`;
-            document.getElementById('datingBio').textContent = profile.bio || 'No bio available';
-            document.getElementById('datingImage').innerHTML = `<i class="fas fa-user"></i>`;
-            
-            // Update distance (if available)
-            if (profile.distance !== undefined) {
-                document.getElementById('datingDistance').innerHTML = `
-                    <i class="fas fa-map-marker-alt"></i> ${profile.distance.toFixed(1)} km away
-                `;
-            }
-            
-            // Update interests
-            const interestsContainer = document.getElementById('datingInterests');
-            if (profile.interests && profile.interests.length > 0) {
-                interestsContainer.innerHTML = profile.interests
-                    .slice(0, 5)
-                    .map(interest => `<span class="interest-tag">${interest}</span>`)
-                    .join('');
+                input.value = '';
+                
+                showToast('Message sent', 'success');
             } else {
-                interestsContainer.innerHTML = '<span class="interest-tag">No interests listed</span>';
+                const errorMsg = handleFastAPIError(response, result);
+                showToast(errorMsg, 'error');
             }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            showToast('Failed to send message', 'error');
         }
+    }
 
-        async function swipe(action) {
-            if (currentDatingIndex >= datingProfiles.length) return;
+    // Dating Functions
+    async function loadDatingProfiles() {
+        try {
+            const response = await makeAuthenticatedRequest('/dating/discover?limit=10');
+            const result = await response.json();
 
-            const profile = datingProfiles[currentDatingIndex];
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/dating/swipe`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        target_user_id: profile.id,
-                        action: action
-                    })
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    if (result.is_match && action === 'like') {
-                        showToast(`🎉 It's a match with ${profile.username}!`, 'success');
-                    }
-                    
-                    // Show next profile
-                    currentDatingIndex++;
+            if (response.ok) {
+                datingProfiles = result.data || result.profiles || [];
+                currentDatingIndex = 0;
+                
+                if (datingProfiles.length === 0) {
+                    showEmptyState('datingCard', 'fas fa-user-friends', 'No profiles found', 'Check back later for new connections!');
+                } else {
                     showDatingProfile();
-                    
-                    // Show toast for the action
-                    const actionText = action === 'like' ? 'liked' : 'passed';
-                    showToast(`${actionText} ${profile.username}`, 'info');
                 }
-            } catch (error) {
-                console.error('Error swiping:', error);
-                showToast('Failed to process swipe', 'error');
+            } else {
+                const errorMsg = handleFastAPIError(response, result);
+                showEmptyState('datingCard', 'fas fa-exclamation-circle', 'Failed to load', errorMsg);
             }
+        } catch (error) {
+            console.error('Error loading dating profiles:', error);
+            showEmptyState('datingCard', 'fas fa-exclamation-circle', 'Failed to load', 'Please try again');
+        }
+    }
+
+    function showDatingProfile() {
+        if (currentDatingIndex >= datingProfiles.length) {
+            loadDatingProfiles(); // Load more profiles
+            return;
         }
 
-        // Notifications
-        async function loadNotifications() {
-            showLoading('notificationList', 'Loading notifications...');
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/notifications`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    if (result.notifications.length === 0) {
-                        showEmptyState('notificationList', 'fas fa-bell', 'No notifications', 'Your notifications will appear here');
-                    } else {
-                        displayNotifications(result.notifications);
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading notifications:', error);
-                showEmptyState('notificationList', 'fas fa-exclamation-circle', 'Failed to load', 'Please try again');
-            }
+        const profile = datingProfiles[currentDatingIndex];
+        
+        // Calculate age from date of birth
+        const age = profile.date_of_birth ? 
+            Math.floor((new Date() - new Date(profile.date_of_birth)) / 31557600000) : 'N/A';
+        
+        document.getElementById('datingName').textContent = `${profile.full_name || profile.username}, ${age}`;
+        document.getElementById('datingBio').textContent = profile.bio || 'No bio available';
+        document.getElementById('datingImage').innerHTML = `<i class="fas fa-user"></i>`;
+        
+        // Update distance (if available)
+        if (profile.distance !== undefined) {
+            document.getElementById('datingDistance').innerHTML = `
+                <i class="fas fa-map-marker-alt"></i> ${profile.distance.toFixed(1)} km away
+            `;
         }
+        
+        // Update interests
+        const interestsContainer = document.getElementById('datingInterests');
+        if (profile.interests && profile.interests.length > 0) {
+            interestsContainer.innerHTML = profile.interests
+                .slice(0, 5)
+                .map(interest => `<span class="interest-tag">${interest}</span>`)
+                .join('');
+        } else {
+            interestsContainer.innerHTML = '<span class="interest-tag">No interests listed</span>';
+        }
+    }
 
-        function displayNotifications(notifications) {
-            const list = document.getElementById('notificationList');
-            
-            list.innerHTML = notifications.map(notif => `
-                <div class="notification-item ${notif.is_read ? '' : 'unread'}" onclick="handleNotificationClick(${notif.id}, '${notif.notification_type}')">
-                    <div class="notification-icon ${notif.notification_type}">
-                        ${getNotificationIcon(notif.notification_type)}
-                    </div>
-                    <div class="notification-content">
-                        <p><strong>${notif.sender_username}</strong> ${getNotificationText(notif.notification_type)}</p>
-                        <div class="notification-time">${formatTimeAgo(notif.created_at)}</div>
-                    </div>
+    async function swipe(action) {
+        if (currentDatingIndex >= datingProfiles.length) return;
+
+        const profile = datingProfiles[currentDatingIndex];
+
+        try {
+            const response = await makeAuthenticatedRequest('/dating/swipe', {
+                method: 'POST',
+                body: JSON.stringify({
+                    target_user_id: profile.id,
+                    action: action
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                if (result.is_match && action === 'like') {
+                    showToast(`🎉 It's a match with ${profile.username}!`, 'success');
+                }
+                
+                // Show next profile
+                currentDatingIndex++;
+                showDatingProfile();
+                
+                // Show toast for the action
+                const actionText = action === 'like' ? 'liked' : 'passed';
+                showToast(`${actionText} ${profile.username}`, 'info');
+            } else {
+                const errorMsg = handleFastAPIError(response, result);
+                showToast(errorMsg, 'error');
+            }
+        } catch (error) {
+            console.error('Error swiping:', error);
+            showToast('Failed to process swipe', 'error');
+        }
+    }
+
+    // Notifications
+    async function loadNotifications() {
+        showLoading('notificationList', 'Loading notifications...');
+
+        try {
+            const response = await makeAuthenticatedRequest('/notifications');
+            const result = await response.json();
+
+            if (response.ok) {
+                const notifications = result.data || result.notifications || [];
+                if (notifications.length === 0) {
+                    showEmptyState('notificationList', 'fas fa-bell', 'No notifications', 'Your notifications will appear here');
+                } else {
+                    displayNotifications(notifications);
+                }
+            } else {
+                const errorMsg = handleFastAPIError(response, result);
+                showEmptyState('notificationList', 'fas fa-exclamation-circle', 'Failed to load', errorMsg);
+            }
+        } catch (error) {
+            console.error('Error loading notifications:', error);
+            showEmptyState('notificationList', 'fas fa-exclamation-circle', 'Failed to load', 'Please try again');
+        }
+    }
+
+    function displayNotifications(notifications) {
+        const list = document.getElementById('notificationList');
+        
+        list.innerHTML = notifications.map(notif => `
+            <div class="notification-item ${notif.is_read ? '' : 'unread'}" onclick="handleNotificationClick(${notif.id}, '${notif.notification_type}')">
+                <div class="notification-icon ${notif.notification_type}">
+                    ${getNotificationIcon(notif.notification_type)}
                 </div>
-            `).join('');
-        }
+                <div class="notification-content">
+                    <p><strong>${notif.sender_username}</strong> ${getNotificationText(notif.notification_type)}</p>
+                    <div class="notification-time">${formatTimeAgo(notif.created_at)}</div>
+                </div>
+            </div>
+        `).join('');
+    }
 
-        function getNotificationIcon(type) {
-            const icons = {
-                'like': 'fas fa-heart',
-                'comment': 'fas fa-comment',
-                'follow': 'fas fa-user-plus',
-                'message': 'fas fa-envelope',
-                'match': 'fas fa-heartbeat'
-            };
-            return `<i class="${icons[type] || 'fas fa-bell'}"></i>`;
-        }
+    function getNotificationIcon(type) {
+        const icons = {
+            'like': 'fas fa-heart',
+            'comment': 'fas fa-comment',
+            'follow': 'fas fa-user-plus',
+            'message': 'fas fa-envelope',
+            'match': 'fas fa-heartbeat'
+        };
+        return `<i class="${icons[type] || 'fas fa-bell'}"></i>`;
+    }
 
-        function getNotificationText(type) {
-            const texts = {
-                'like': 'liked your post',
-                'comment': 'commented on your post',
-                'follow': 'started following you',
-                'message': 'sent you a message',
-                'match': 'matched with you'
-            };
-            return texts[type] || 'sent you a notification';
-        }
+    function getNotificationText(type) {
+        const texts = {
+            'like': 'liked your post',
+            'comment': 'commented on your post',
+            'follow': 'started following you',
+            'message': 'sent you a message',
+            'match': 'matched with you'
+        };
+        return texts[type] || 'sent you a notification';
+    }
 
-        async function handleNotificationClick(notificationId, type) {
-            try {
-                // Mark as read
-                await fetch(`${API_BASE_URL}/notifications/${notificationId}/read`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-                
-                // Update UI
-                const notification = document.querySelector(`[onclick*="${notificationId}"]`);
-                if (notification) {
-                    notification.classList.remove('unread');
-                }
-                
-                // Update badge count
-                updateBadgeCounts();
-                
-                // Handle based on notification type
-                switch (type) {
-                    case 'message':
-                        showSection('messages');
-                        break;
-                    case 'follow':
-                        showSection('profile');
-                        break;
-                    case 'like':
-                    case 'comment':
-                        // Could navigate to the specific post
-                        showToast('Notification handled', 'success');
-                        break;
-                }
-            } catch (error) {
-                console.error('Error handling notification:', error);
+    async function handleNotificationClick(notificationId, type) {
+        try {
+            // Mark as read
+            await makeAuthenticatedRequest(`/notifications/${notificationId}/read`, {
+                method: 'POST'
+            });
+            
+            // Update UI
+            const notification = document.querySelector(`[onclick*="${notificationId}"]`);
+            if (notification) {
+                notification.classList.remove('unread');
             }
-        }
-
-        function handleIncomingNotification(data) {
-            // Show toast for new notification
-            showToast(`${data.sender_username} ${getNotificationText(data.notification_type)}`, 'info');
             
             // Update badge count
             updateBadgeCounts();
             
-            // Reload notifications if we're on the notifications page
-            if (document.getElementById('notificationsSection').classList.contains('hidden') === false) {
-                loadNotifications();
+            // Handle based on notification type
+            switch (type) {
+                case 'message':
+                    showSection('messages');
+                    break;
+                case 'follow':
+                    showSection('profile');
+                    break;
+                case 'like':
+                case 'comment':
+                    showToast('Notification handled', 'success');
+                    break;
             }
+        } catch (error) {
+            console.error('Error handling notification:', error);
         }
+    }
 
-        // Profile Functions
-        async function loadProfile() {
-            try {
-                // Load user profile
-                const response = await fetch(`${API_BASE_URL}/users/${currentUser.id}`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    const user = result.user;
-                    document.getElementById('profileUsername').textContent = user.username;
-                    document.getElementById('profileBio').textContent = user.bio || 'No bio yet';
-                    
-                    // Load user posts
-                    await loadUserPosts();
-                    
-                    // Load user stats
-                    await loadUserStats();
-                }
-            } catch (error) {
-                console.error('Error loading profile:', error);
-                showToast('Failed to load profile', 'error');
-            }
+    function handleIncomingNotification(data) {
+        // Show toast for new notification
+        showToast(`${data.sender_username} ${getNotificationText(data.notification_type)}`, 'info');
+        
+        // Update badge count
+        updateBadgeCounts();
+        
+        // Reload notifications if we're on the notifications page
+        if (document.getElementById('notificationsSection').classList.contains('hidden') === false) {
+            loadNotifications();
         }
+    }
 
-        async function loadUserPosts() {
-            try {
-                const response = await fetch(`${API_BASE_URL}/users/${currentUser.id}/posts`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
+    // Profile Functions
+    async function loadProfile() {
+        try {
+            // Load user profile
+            const response = await makeAuthenticatedRequest(`/users/${currentUser.id}`);
+            const result = await response.json();
 
-                const result = await response.json();
-
-                if (result.success) {
-                    const userPosts = document.getElementById('userPosts');
-                    
-                    if (result.posts.length === 0) {
-                        showEmptyState('userPosts', 'fas fa-camera', 'No posts yet', 'Share your first post!');
-                    } else {
-                        // Display user posts (simplified version)
-                        userPosts.innerHTML = result.posts.map(post => `
-                            <div class="user-post">
-                                <p>${post.content ? post.content.substring(0, 100) + '...' : 'Post'}</p>
-                                <small>${formatTimeAgo(post.created_at)}</small>
-                            </div>
-                        `).join('');
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading user posts:', error);
-            }
-        }
-
-        async function loadUserStats() {
-            try {
-                const response = await fetch(`${API_BASE_URL}/users/${currentUser.id}/stats`, {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    document.getElementById('postsCount').textContent = result.stats.posts_count || 0;
-                    document.getElementById('followersCount').textContent = result.stats.followers_count || 0;
-                    document.getElementById('followingCount').textContent = result.stats.following_count || 0;
-                }
-            } catch (error) {
-                console.error('Error loading user stats:', error);
-            }
-        }
-
-        async function uploadProfilePicture(input) {
-            if (!input.files || !input.files[0]) return;
-
-            const formData = new FormData();
-            formData.append('file', input.files[0]);
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/profile/picture`, {
-                    method: 'POST',
-                    headers: { 'Authorization': `Bearer ${accessToken}` },
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    showToast('Profile picture updated!', 'success');
-                    await loadProfile();
-                    updateUserProfile();
-                }
-            } catch (error) {
-                console.error('Error uploading profile picture:', error);
-                showToast('Failed to upload profile picture', 'error');
-            }
-        }
-
-        // Logout
-        function logout() {
-            if (confirm('Are you sure you want to logout from meiXuP?')) {
-                // Clear local storage
-                localStorage.removeItem('access_token');
-                localStorage.removeItem('refresh_token');
-                localStorage.removeItem('user');
+            if (response.ok) {
+                const user = result.data || result.user || {};
+                document.getElementById('profileUsername').textContent = user.username || currentUser.username;
+                document.getElementById('profileBio').textContent = user.bio || currentUser.bio || 'No bio yet';
                 
-                // Close WebSocket connection
-                if (websocket) {
-                    websocket.close();
-                }
+                // Load user posts
+                await loadUserPosts();
                 
-                // Reset variables
-                accessToken = null;
-                refreshToken = null;
-                currentUser = {};
+                // Load user stats
+                await loadUserStats();
+            }
+        } catch (error) {
+            console.error('Error loading profile:', error);
+            showToast('Failed to load profile', 'error');
+        }
+    }
+
+    async function loadUserPosts() {
+        try {
+            const response = await makeAuthenticatedRequest(`/users/${currentUser.id}/posts`);
+            const result = await response.json();
+
+            if (response.ok) {
+                const posts = result.data || result.posts || [];
+                const userPosts = document.getElementById('userPosts');
                 
-                // Show register page
-                showRegisterPage();
-                
-                showToast('Logged out successfully', 'success');
-            }
-        }
-
-        // Token refresh
-        async function refreshAccessToken() {
-            if (!refreshToken) return null;
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/auth/refresh`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ refresh_token: refreshToken })
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    accessToken = result.access_token;
-                    localStorage.setItem('access_token', accessToken);
-                    return accessToken;
-                }
-            } catch (error) {
-                console.error('Error refreshing token:', error);
-            }
-            
-            return null;
-        }
-
-        // Global search
-        document.getElementById('globalSearch').addEventListener('keypress', async function(e) {
-            if (e.key === 'Enter') {
-                const query = this.value.trim();
-                if (query) {
-                    // Implement search functionality
-                    showToast(`Searching for: ${query}`, 'info');
-                    // You would typically redirect to search results or show a modal
-                }
-            }
-        });
-
-        // Handle post media
-        function handlePostMedia(input) {
-            if (input.files && input.files[0]) {
-                selectedPostMedia = input.files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('postMediaPreview').innerHTML = `
-                        <div style="margin-top: 15px; position: relative;">
-                            <img src="${e.target.result}" style="max-width: 100%; border-radius: 10px; max-height: 300px;">
-                            <button onclick="removePostMedia()" style="position: absolute; top: 10px; right: 10px; background: rgba(15, 23, 42, 0.8); border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; color: white; font-size: 16px;">✕</button>
-                        </div>
-                    `;
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        function removePostMedia() {
-            selectedPostMedia = null;
-            document.getElementById('postImageInput').value = '';
-            document.getElementById('postMediaPreview').innerHTML = '';
-        }
-
-        // Profile tabs
-        function showProfileTab(tab) {
-            // Update active tab
-            document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            
-            // Here you would load different content based on the tab
-            // For now, just show a toast
-            showToast(`Loading ${tab}...`, 'info');
-        }
-
-        // Auto-refresh token every 50 minutes
-        setInterval(refreshAccessToken, 50 * 60 * 1000);
-
-        // Add some utility functions that might be needed
-        function focusComment(postId) {
-            showToast('Focus comment functionality would go here', 'info');
-        }
-
-        function sharePost(postId) {
-            showToast('Share post functionality would go here', 'info');
-        }
-
-        function savePost(postId) {
-            showToast('Save post functionality would go here', 'info');
-        }
-
-        function reportPost(postId) {
-            showToast('Report post functionality would go here', 'info');
-        }
-
-        function editProfile() {
-            showToast('Edit profile functionality would go here', 'info');
-        }
-
-        function showLocationPicker() {
-            showToast('Location picker would appear here', 'info');
-        }
-
-        function showTagFriends() {
-            showToast('Tag friends functionality would go here', 'info');
-        }
-
-        function updatePostLike(postId, likeCount, isLiked) {
-            const likeCountElement = document.getElementById(`like-count-${postId}`);
-            const likeButton = document.querySelector(`#post-${postId} .post-action`);
-            
-            if (likeCountElement) {
-                likeCountElement.textContent = likeCount;
-            }
-            
-            if (likeButton) {
-                if (isLiked) {
-                    likeButton.classList.add('active');
-                    likeButton.innerHTML = '<i class="fas fa-heart"></i> Liked';
+                if (posts.length === 0) {
+                    showEmptyState('userPosts', 'fas fa-camera', 'No posts yet', 'Share your first post!');
                 } else {
-                    likeButton.classList.remove('active');
-                    likeButton.innerHTML = '<i class="fas fa-heart"></i> Like';
+                    // Display user posts
+                    userPosts.innerHTML = posts.map(post => `
+                        <div class="user-post">
+                            <p>${post.content ? post.content.substring(0, 100) + '...' : 'Post'}</p>
+                            <small>${formatTimeAgo(post.created_at)}</small>
+                        </div>
+                    `).join('');
                 }
             }
+        } catch (error) {
+            console.error('Error loading user posts:', error);
         }
+    }
 
-        function updateUserStatus(userId, status) {
-            // Update status in chat list
-            const chatItem = document.querySelector(`.chat-item[onclick*="${userId}"]`);
-            if (chatItem) {
-                const indicator = chatItem.querySelector('.online-indicator');
-                if (indicator) {
-                    indicator.style.background = status === 'online' ? '#10b981' : '#94a3b8';
+    async function loadUserStats() {
+        try {
+            const response = await makeAuthenticatedRequest(`/users/${currentUser.id}/stats`);
+            const result = await response.json();
+
+            if (response.ok) {
+                const stats = result.data || result.stats || {};
+                document.getElementById('postsCount').textContent = stats.posts_count || 0;
+                document.getElementById('followersCount').textContent = stats.followers_count || 0;
+                document.getElementById('followingCount').textContent = stats.following_count || 0;
+            }
+        } catch (error) {
+            console.error('Error loading user stats:', error);
+        }
+    }
+
+    async function uploadProfilePicture(input) {
+        if (!input.files || !input.files[0]) return;
+
+        const formData = new FormData();
+        formData.append('file', input.files[0]);
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/profile/picture`, {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${accessToken}` },
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                showToast('Profile picture updated!', 'success');
+                await loadProfile();
+                updateUserProfile();
+            } else {
+                const errorMsg = handleFastAPIError(response, result);
+                showToast(errorMsg, 'error');
+            }
+        } catch (error) {
+            console.error('Error uploading profile picture:', error);
+            showToast('Failed to upload profile picture', 'error');
+        }
+    }
+
+    // Token refresh
+    async function refreshAccessToken() {
+        if (!refreshToken) return null;
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/auth/refresh`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ refresh_token: refreshToken })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                let access_token, refresh_token;
+                
+                if (result.access_token) {
+                    access_token = result.access_token;
+                    refresh_token = result.refresh_token || result.access_token;
+                } else if (result.data) {
+                    access_token = result.data.access_token;
+                    refresh_token = result.data.refresh_token;
+                } else if (result.token) {
+                    access_token = result.token;
+                    refresh_token = result.token;
+                } else {
+                    access_token = result?.tokens?.access_token;
+                    refresh_token = result?.tokens?.refresh_token;
+                }
+                
+                if (access_token) {
+                    accessToken = access_token;
+                    refreshToken = refresh_token;
+                    localStorage.setItem('access_token', accessToken);
+                    localStorage.setItem('refresh_token', refreshToken);
+                    return true;
                 }
             }
+        } catch (error) {
+            console.error('Error refreshing token:', error);
         }
+        
+        return false;
+    }
 
-        // Enter key for message input
-        document.getElementById('messageInput')?.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
+    // Logout
+    function logout() {
+        if (confirm('Are you sure you want to logout from meiXuP?')) {
+            // Clear local storage
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+            localStorage.removeItem('user');
+            localStorage.removeItem('pending_email');
+            localStorage.removeItem('pending_username');
+            
+            // Close WebSocket connection
+            if (websocket) {
+                websocket.close();
             }
-        });
+            
+            // Clear any timers
+            clearInterval(resendTimerInterval);
+            
+            // Reset variables
+            accessToken = null;
+            refreshToken = null;
+            currentUser = {};
+            currentChatUserId = null;
+            datingProfiles = [];
+            currentDatingIndex = 0;
+            
+            // Show register page
+            showRegisterPage();
+            
+            showToast('Logged out successfully', 'success');
+        }
+    }
 
-        // Enter key for post content
-        document.getElementById('postContent')?.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && e.ctrlKey) {
-                e.preventDefault();
-                createPost();
+    // Handle post media
+    function handlePostMedia(input) {
+        if (input.files && input.files[0]) {
+            selectedPostMedia = input.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('postMediaPreview').innerHTML = `
+                    <div style="margin-top: 15px; position: relative;">
+                        <img src="${e.target.result}" style="max-width: 100%; border-radius: 10px; max-height: 300px;">
+                        <button onclick="removePostMedia()" style="position: absolute; top: 10px; right: 10px; background: rgba(15, 23, 42, 0.8); border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; color: white; font-size: 16px;">✕</button>
+                    </div>
+                `;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function removePostMedia() {
+        selectedPostMedia = null;
+        document.getElementById('postImageInput').value = '';
+        document.getElementById('postMediaPreview').innerHTML = '';
+    }
+
+    // Profile tabs
+    function showProfileTab(tab) {
+        document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        
+        // Here you would load different content based on the tab
+        showToast(`Loading ${tab}...`, 'info');
+        
+        // For now, just reload posts
+        if (tab === 'posts') {
+            loadUserPosts();
+        }
+    }
+
+    // Auto-refresh token every 50 minutes
+    setInterval(refreshAccessToken, 50 * 60 * 1000);
+
+    // Utility functions
+    function focusComment(postId) {
+        showToast('Focus comment functionality would go here', 'info');
+    }
+
+    function sharePost(postId) {
+        showToast('Share post functionality would go here', 'info');
+    }
+
+    function savePost(postId) {
+        showToast('Save post functionality would go here', 'info');
+    }
+
+    function reportPost(postId) {
+        showToast('Report post functionality would go here', 'info');
+    }
+
+    function editProfile() {
+        showToast('Edit profile functionality would go here', 'info');
+    }
+
+    function showLocationPicker() {
+        showToast('Location picker would appear here', 'info');
+    }
+
+    function showTagFriends() {
+        showToast('Tag friends functionality would go here', 'info');
+    }
+
+    function updatePostLike(postId, likeCount, isLiked) {
+        const likeCountElement = document.getElementById(`like-count-${postId}`);
+        const likeButton = document.querySelector(`#post-${postId} .post-action`);
+        
+        if (likeCountElement) {
+            likeCountElement.textContent = likeCount;
+        }
+        
+        if (likeButton) {
+            if (isLiked) {
+                likeButton.classList.add('active');
+                likeButton.innerHTML = '<i class="fas fa-heart"></i> Liked';
+            } else {
+                likeButton.classList.remove('active');
+                likeButton.innerHTML = '<i class="fas fa-heart"></i> Like';
             }
-        });
-    </script>
+        }
+    }
+
+    function updateUserStatus(userId, status) {
+        const chatItem = document.querySelector(`.chat-item[onclick*="${userId}"]`);
+        if (chatItem) {
+            const indicator = chatItem.querySelector('.online-indicator');
+            if (indicator) {
+                indicator.style.background = status === 'online' ? '#10b981' : '#94a3b8';
+            }
+        }
+    }
+
+    // Enter key for message input
+    document.getElementById('messageInput')?.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    // Enter key for post content
+    document.getElementById('postContent')?.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && e.ctrlKey) {
+            e.preventDefault();
+            createPost();
+        }
+    });
+
+    // Global search
+    document.getElementById('globalSearch')?.addEventListener('keypress', async function(e) {
+        if (e.key === 'Enter') {
+            const query = this.value.trim();
+            if (query) {
+                showToast(`Searching for: ${query}`, 'info');
+                // You would typically redirect to search results or show a modal
+            }
+        }
+    });
+</script>
 </body>
 </html>
