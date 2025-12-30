@@ -53,7 +53,15 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            overflow-y: auto;
+    overscroll-behavior: contain;
         }
+
+
+body.modal-open {
+    overflow: hidden;
+}
+
 
         .premium-glow {
             position: fixed;
@@ -1673,6 +1681,690 @@
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
+
+
+
+
+        /* Overlay */
+/* .modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+} */
+
+/* Modal Card */
+/* .modal-content {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 80px rgba(95, 94, 94, 0.5);
+  animation: modalPop 0.35s ease;
+  overflow: hidden;
+} */
+
+/* Header */
+/* .modal-header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+} */
+
+/* .modal-header h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+} */
+
+/* .modal-header button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: var(--transition);
+} */
+
+/* .modal-header button:hover {
+  color: var(--danger);
+} */
+
+/* Form */
+#postForm {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background-color: #292a2b88;
+}
+
+/* Textarea */
+#postContent {
+  width: 100%;
+  resize: none;
+  padding: 14px;
+  min-height: 100px;
+  background: black;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+#postContent:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Input & Select */
+input, select {
+  padding: 12px;
+  background: black;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+/* 
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+} */
+
+/* Row */
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row > * {
+  flex: 1;
+}
+
+/* Upload Box */
+.upload-box {
+  border: 2px dashed black;
+  padding: 22px;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  background: black;
+  
+}
+
+.upload-box:hover {
+  border-color: var(--accent);
+  background: black;
+}
+
+/* Preview */
+#filePreview {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Button */
+.btn-prim {
+  background: linear-gradient(135deg, black);
+  border: none;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-prim:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes modalPop {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .modal-content {
+    margin: 10px;
+  }
+}
+
+
+
+
+/* =========================
+   FEED LAYOUT
+========================= */
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* =========================
+   POST CARD
+========================= */
+
+.post-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   POST HEADER
+========================= */
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+}
+
+.post-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-header strong {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 2px;
+}
+
+.verified {
+    color: #1da1f2;
+    margin-left: 5px;
+}
+
+/* =========================
+   POST CONTENT
+========================= */
+
+.post-content {
+    padding: 0 16px 12px;
+}
+
+.post-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+}
+
+/* =========================
+   MEDIA
+========================= */
+
+.post-media,
+.post-media img,
+.post-media video {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+video.post-media {
+    background: #000;
+}
+
+/* =========================
+   TAGS
+========================= */
+
+.post-tags {
+    margin-top: 8px;
+}
+
+.post-tag {
+    display: inline-block;
+    font-size: 12px;
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-right: 6px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px 14px;
+    border-top: 1px solid #eee;
+}
+
+.post-actions span {
+    cursor: pointer;
+    font-size: 21px;
+    color: #fffdfd;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.post-actions span:hover {
+    color: #111;
+}
+
+/* ❤️ Like state */
+.post-actions .liked {
+    color: #e0245e;
+    font-weight: 600;
+}
+
+
+
+/* =========================
+   MEDIA PREVIEW HOVER
+========================= */
+
+.post-media {
+    position: relative;
+    cursor: zoom-in;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.post-media img,
+.post-media video {
+    transition: transform 0.35s ease;
+}
+
+/* Hover zoom preview */
+.post-media:hover img,
+.post-media:hover video {
+    transform: scale(1.05);
+}
+
+/* Play icon overlay for video */
+.post-media video::after {
+    content: "▶";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: rgba(255,255,255,0.8);
+}
+
+/* =========================
+   FULLSCREEN ZOOM MODAL
+========================= */
+
+.media-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.25s ease;
+}
+
+.media-modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    animation: zoomIn 0.3s ease;
+}
+
+.media-modal-content img,
+.media-modal-content video {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 14px;
+}
+
+/* Close button */
+.media-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 34px;
+    color: white;
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.media-modal-close:hover {
+    opacity: 1;
+}
+
+/* =========================
+   ZOOM ANIMATIONS
+========================= */
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =========================
+   DOUBLE TAP LIKE EFFECT
+========================= */
+
+.like-float {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    font-size: 80px;
+    color: rgba(224,36,94,0.85);
+    animation: likePop 0.8s ease forwards;
+}
+
+@keyframes likePop {
+    0% { transform: scale(0.6); opacity: 0; }
+    30% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* =========================
+   VIDEO CONTROLS ENHANCEMENT
+========================= */
+
+video {
+    outline: none;
+    background: black;
+}
+
+video::-webkit-media-controls-panel {
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+}
+
+/* =========================
+   MOBILE OPTIMIZATION
+========================= */
+
+@media (max-width: 600px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .post-media img,
+    .post-media video {
+        max-height: 300px;
+    }
+
+    .media-modal-content {
+        max-width: 95%;
+    }
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.posts-grid > div {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* =========================
+   DARK MODE (Optional)
+========================= */
+
+body.dark .post-card {
+    background: #121212;
+    color: #eaeaea;
+}
+
+body.dark .post-content p {
+    color: #ddd;
+}
+
+body.dark .post-actions {
+    border-color: #222;
+}
+
+body.dark .post-tag {
+    background: #1f1f3a;
+    color: #8b8bff;
+}
+
+
+
+
+
+
+.comment-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 10000;
+    display: flex;
+    align-items: flex-end;
+}
+
+.comment-modal.hidden {
+    display: none;
+}
+
+.comment-sheet {
+    width: 100%;
+    max-height: 80vh;
+    background: #000000d5;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp .25s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.comment-header {
+    padding: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comments-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+}
+
+.comment-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.comment-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-user {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.comment-text {
+    font-size: 14px;
+    margin: 2px 0;
+}
+
+.comment-meta {
+    font-size: 11px;
+    color: #888;
+}
+
+.comment-input-box {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+.comment-input-box input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+}
+
+.comment-input-box button {
+    margin-left: 8px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 18px;
+    cursor: pointer;
+}
+
+.search-results {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    max-height: 70vh;
+    background: #1f1d1dee;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.514);
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+.search-results.hidden {
+    display: none;
+}
+
+.search-user-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.search-user-item img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.search-user-info {
+    flex: 1;
+}
+
+.search-user-info strong {
+    font-size: 14px;
+}
+
+.search-user-info span {
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.search-follow-btn {
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+}
+
+.search-follow-btn.follow {
+    background: #4f46e5;
+    color: #fff;
+}
+
+.search-follow-btn.unfollow {
+    background: #eee;
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -1701,63 +2393,60 @@
 
 <!-- Create Post Modal -->
 <div id="createPostModal" class="modal-overlay">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3>Create New Post</h3>
-            <button class="close-modal" onclick="closeCreatePostModal()">&times;</button>
-        </div>
-        <form id="postForm" class="post-form">
-            <div class="form-group">
-                <textarea id="postContent" placeholder="What's on your mind?" rows="4" required></textarea>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <select id="postType" required>
-                        <option value="post">Post</option>
-                        <option value="story">Story</option>
-                        <option value="reel">Reel</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select id="postPrivacy" required>
-                        <option value="public">Public</option>
-                        <option value="friends">Friends Only</option>
-                        <option value="private">Private</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <input type="text" id="postTags" placeholder="Add tags (comma separated)">
-            </div>
-            
-            <div class="file-upload" onclick="document.getElementById('postMedia').click()">
-                <input type="file" id="postMedia" accept="image/*,video/*" style="display: none;">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <p>Click to upload media (image/video)</p>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">
-                    Max 50MB
-                </p>
-            </div>
-            
-            <div id="filePreview" class="file-preview"></div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <input type="number" id="postLat" placeholder="Latitude (optional)" step="any">
-                </div>
-                <div class="form-group">
-                    <input type="number" id="postLng" placeholder="Longitude (optional)" step="any">
-                </div>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" id="submitPostBtn">
-                <i class="fas fa-paper-plane"></i> Post
-            </button>
-        </form>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Create Post</h3>
+      <button onclick="closeCreatePostModal()">❌</button>
     </div>
+
+    <form id="postForm">
+
+      <textarea id="postContent"
+        placeholder="What's happening?"
+        rows="4"></textarea>
+
+      <div class="row">
+        <select id="postType">
+          <option value="post">Post</option>
+          <option value="story">Story</option>
+          <option value="reel">Reel</option>
+        </select>
+
+        <select id="postPrivacy">
+          <option value="public">Public</option>
+          <option value="friends">Friends</option>
+          <option value="private">Private</option>
+        </select>
+      </div>
+
+      <input id="postTags" type="text" placeholder="Tags (comma separated)">
+
+      <div class="upload-box" onclick="postMedia.click()">
+        <input id="postMedia" type="file" hidden accept="image/*,video/*">
+        <p>Click to upload image / video</p>
+      </div>
+
+      <div id="filePreview"></div>
+
+      <!-- <div class="row">
+        <input id="postLat" type="number" step="any" placeholder="Latitude">
+        <input id="postLng" type="number" step="any" placeholder="Longitude">
+      </div> -->
+
+      <button type="submit" class="btn-prim">
+        🚀 Post
+      </button>
+
+    </form>
+  </div>
 </div>
+
+
+
+
+
+
+
 
 <!-- Auth Section -->
 <div id="authOverlay" class="auth-overlay">
@@ -2059,6 +2748,28 @@
                     <!-- Posts will be loaded here -->
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <!-- Dating Section -->
             <div id="datingSection" class="content-section">
@@ -2451,6 +3162,34 @@
         </div>
     </div>
 </div>
+
+<!-- comment modal -->
+<div id="commentModal" class="comment-modal hidden">
+  <div class="comment-sheet">
+
+    <div class="comment-header">
+      <span>Comments</span>
+      <button onclick="closeComments()">Close</button>
+    </div>
+
+    <div id="commentsList" class="comments-body">
+      <!-- comments load here -->
+    </div>
+
+    <div class="comment-input-box">
+      <input
+        id="commentInput"
+        placeholder="Add a comment..."
+        maxlength="500"
+      />
+      <button onclick="submitComment()">Post</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- search result -->
+<div id="searchResults" class="search-results hidden"></div>
 
 <!-- Notifications Panel -->
 <div class="notifications-panel" id="notificationsPanel">
@@ -3213,165 +3952,378 @@
         }
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Feed Functions
     async function loadFeed() {
-        try {
-            const feedType = document.getElementById('feedType')?.value || 'all';
-            const response = await fetchWithAuth(`${API_BASE_URL}/feed?feed_type=${feedType}&limit=20`);
-            const data = await response.json();
-            
-            if (data.success) {
-                renderPosts(data.posts);
-            }
-        } catch (error) {
-            console.error('Failed to load feed:', error);
-            showToast('Failed to load feed', 'error');
+    try {
+        const feedType = document.getElementById('feedType')?.value || 'following';
+        const response = await fetchWithAuth(
+            `${API_BASE_URL}/feed?feed_type=${feedType}&limit=20`
+        );
+
+        const data = await response.json();
+        console.log("Feed response:", data);
+
+        if (data.success) {
+            renderPosts(data.posts);
         }
+    } catch (error) {
+        console.error('Failed to load feed:', error);
+        showToast('Failed to load feed', 'error');
     }
+}
+
 
     function renderPosts(posts) {
-        if (!postsGrid) return;
-        postsGrid.innerHTML = '';
-        
-        if (!posts || posts.length === 0) {
-            postsGrid.innerHTML = `
-                <div style="text-align: center; padding: 40px; color: var(--text-secondary); grid-column: 1 / -1;">
-                    <i class="fas fa-newspaper" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
-                    <h3>No posts yet</h3>
-                    <p>Be the first to post or follow more users</p>
-                </div>
-            `;
-            return;
-        }
-        
-        posts.forEach(post => {
-            const postElement = document.createElement('div');
-            postElement.className = 'post-card';
-            postElement.id = `post-${post.id}`;
-            
-            let mediaHtml = '';
-            if (post.media_url) {
-                const mediaUrl = `${API_BASE_URL}/assets/posts/${post.media_url}`;
-                if (post.media_type === 'video') {
-                    mediaHtml = `
-                        <div class="post-media">
-                            <video src="${mediaUrl}" controls style="width:100%; max-height: 400px; border-radius: var(--border-radius-sm);"></video>
-                        </div>
-                    `;
-                } else {
-                    mediaHtml = `
-                        <div class="post-media">
-                            <img src="${mediaUrl}" alt="Post media" style="width:100%; max-height: 400px; object-fit: cover; border-radius: var(--border-radius-sm);">
-                        </div>
-                    `;
-                }
-            }
-            
-            let tagsHtml = '';
-            if (post.tags && post.tags.length > 0) {
-                tagsHtml = `
-                    <div class="post-tags">
-                        ${post.tags.map(tag => `<span class="post-tag">#${tag}</span>`).join('')}
-                    </div>
+    const postsGrid = document.getElementById('postsGrid');
+    if (!postsGrid) return;
+
+    postsGrid.innerHTML = '';
+
+    if (!posts || posts.length === 0) {
+        postsGrid.innerHTML = `
+            <div style="text-align:center; padding:40px; grid-column:1/-1;">
+                <h3>No posts yet</h3>
+                <p>Follow users or create your first post</p>
+            </div>
+        `;
+        return;
+    }
+
+    posts.forEach(post => {
+
+        /* 🔧 Normalize backend data */
+        const tags = post.tags ? JSON.parse(post.tags) : [];
+        const createdAt = post.created_at ? new Date(post.created_at) : new Date();
+        const isVerified = post.is_verified === 1;
+        const isLiked = post.is_liked === 1;
+
+        /* 🔧 Media path fix */
+        let mediaHtml = '';
+        if (post.media_url) {
+            const mediaUrl = post.media_url.startsWith('http')
+                ? post.media_url
+                : `${API_BASE_URL}${post.media_url}`;
+
+            if (post.media_type === 'video') {
+                mediaHtml = `
+                    <video src="${mediaUrl}" controls class="post-media"></video>
+                `;
+            } else {
+                mediaHtml = `
+                    <img src="${mediaUrl}" class="post-media" />
                 `;
             }
-            
-            postElement.innerHTML = `
-                <div class="post-header">
-                    <div class="post-avatar">
-                        <img src="${post.profile_picture ? `${API_BASE_URL}/assets/profiles/${post.profile_picture}` : 'https://ui-avatars.com/api/?name=User&background=667eea&color=fff'}" alt="User">
-                    </div>
-                    <div class="post-user-info">
-                        <h4>${post.username} ${post.is_verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</h4>
-                        <p>${new Date(post.created_at).toLocaleDateString()} • ${post.post_type}</p>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <div class="post-text">${post.content || ''}</div>
-                    ${mediaHtml}
-                    ${tagsHtml}
-                </div>
-                <div class="post-stats">
-                    <div class="stat-item ${post.is_liked ? 'active' : ''}" onclick="likePost(${post.id})">
-                        <i class="fas fa-heart"></i>
-                        <span>${post.likes_count || 0}</span>
-                    </div>
-                    <div class="stat-item" onclick="showComments(${post.id})">
-                        <i class="fas fa-comment"></i>
-                        <span>${post.comments_count || 0}</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-share"></i>
-                        <span>${post.shares_count || 0}</span>
-                    </div>
-                </div>
-            `;
-            postsGrid.appendChild(postElement);
-        });
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    async function likePost(postId) {
-        try {
-            const response = await fetchWithAuth(`${API_BASE_URL}/posts/${postId}/like`, {
-                method: 'POST'
-            });
-            const data = await response.json();
-            
-            if (data.success) {
-                // Update UI
-                const postElement = document.getElementById(`post-${postId}`);
-                if (postElement) {
-                    const likeStat = postElement.querySelector('.stat-item:first-child');
-                    const likeCount = likeStat.querySelector('span');
-                    const likeIcon = likeStat.querySelector('i');
-                    
-                    if (data.action === 'liked') {
-                        likeStat.classList.add('active');
-                        likeCount.textContent = parseInt(likeCount.textContent) + 1;
-                        likeIcon.className = 'fas fa-heart';
-                    } else {
-                        likeStat.classList.remove('active');
-                        likeCount.textContent = parseInt(likeCount.textContent) - 1;
-                        likeIcon.className = 'far fa-heart';
-                    }
-                }
-            }
-        } catch (error) {
-            console.error('Failed to like post:', error);
-            showToast('Failed to like post', 'error');
         }
+
+        /* 🔧 Tags fix */
+        const tagsHtml = tags.length
+            ? `<div class="post-tags">
+                ${tags.map(t => `<span class="post-tag">${t}</span>`).join('')}
+               </div>`
+            : '';
+
+        const postElement = document.createElement('div');
+        postElement.className = 'post-card';
+        postElement.id = `post-${post.id}`;
+
+        postElement.innerHTML = `
+            <div class="post-header">
+                <img class="post-avatar"
+                     src="${post.profile_picture
+                        ? `${API_BASE_URL}/assets/profiles/${post.profile_picture}`
+                        : 'https://ui-avatars.com/api/?name=User'}" />
+
+                <div>
+                    <strong>${post.username}
+                        ${isVerified ? '<i class="fas fa-check-circle verified"></i>' : ''}
+                    </strong>
+                    <div class="post-date">
+                        ${createdAt.toLocaleString()}
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-content">
+                <p>${post.content || ''}</p>
+                ${mediaHtml}
+                ${tagsHtml}
+            </div>
+
+            <div class="post-actions">
+                <span onclick="likePost(${post.id})"
+                      class="${isLiked ? 'liked' : ''}">
+                    ❤️ ${post.likes_count}
+                </span>
+
+                <span onclick="showComments(${post.id})">
+                    💬 ${post.comments_count}
+                </span>
+
+                <span onclick="sharePost(${post.id})">
+                    🔁 ${post.shares_count}
+                </span>
+            </div>
+        `;
+
+        postsGrid.appendChild(postElement);
+    });
+}
+
+document.addEventListener("click", e => {
+    const media = e.target.closest(".post-media img, .post-media video");
+    if (!media) return;
+
+    const modal = document.createElement("div");
+    modal.className = "media-modal";
+
+    modal.innerHTML = `
+        <span class="media-modal-close">&times;</span>
+        <div class="media-modal-content">
+            ${media.tagName === "VIDEO"
+                ? `<video src="${media.src}" controls autoplay></video>`
+                : `<img src="${media.src}" />`
+            }
+        </div>
+    `;
+
+    modal.onclick = () => modal.remove();
+    document.body.appendChild(modal);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// sharing
+async function sharePost(postId) {
+    try {
+        const res = await fetchWithAuth(
+            `${API_BASE_URL}/posts/${postId}/share`,
+            { method: 'POST' }
+        );
+
+        const data = await res.json();
+
+        if (data.success && data.shared) {
+            showToast("Post shared", "success");
+            loadFeed(); // refresh count
+        } else {
+            showToast("Already shared", "info");
+        }
+
+    } catch (err) {
+        console.error("Share failed:", err);
+        showToast("Failed to share post", "error");
     }
+}
+
+
+
+
+
+// Comments
+let currentPostId = null;
+
+/* Open */
+function showComments(postId) {
+    currentPostId = postId;
+    document.getElementById("commentModal").classList.remove("hidden");
+    loadComments();
+}
+
+/* Close */
+function closeComments() {
+    document.getElementById("commentModal").classList.add("hidden");
+    currentPostId = null;
+}
+
+/* Load */
+async function loadComments() {
+    const list = document.getElementById("commentsList");
+    list.innerHTML = "<p>Loading...</p>";
+
+    try {
+        const res = await fetchWithAuth(
+            `${API_BASE_URL}/posts/${currentPostId}/comments`
+        );
+        const data = await res.json();
+
+        list.innerHTML = "";
+
+        data.comments.forEach(c => {
+            list.appendChild(renderComment(c));
+        });
+
+    } catch {
+        list.innerHTML = "<p>Failed to load comments</p>";
+    }
+}
+
+/* Render single comment */
+function renderComment(c) {
+    const div = document.createElement("div");
+    div.className = "comment-item";
+
+    div.innerHTML = `
+        <img class="comment-avatar"
+             src="${c.profile_picture
+                ? `${API_BASE_URL}/assets/profiles/${c.profile_picture}`
+                : 'https://ui-avatars.com/api/?name=User'}" />
+
+        <div class="comment-content">
+            <div class="comment-user">
+                ${c.username}
+                ${c.is_verified ? '✔️' : ''}
+            </div>
+
+            <div class="comment-text">${c.content}</div>
+
+            <div class="comment-meta">
+                ${new Date(c.created_at).toLocaleString()}
+                · ❤️ ${c.likes_count}
+            </div>
+        </div>
+    `;
+    return div;
+}
+
+/* Submit (Optimistic UI) */
+async function submitComment() {
+    const input = document.getElementById("commentInput");
+    const text = input.value.trim();
+    if (!text || !currentPostId) return;
+
+    input.value = "";
+
+    try {
+        const response = await fetchWithAuth(
+            `${API_BASE_URL}/posts/${currentPostId}/comment`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    content: text   // ✅ MUST be "content"
+                })
+            }
+        );
+
+        if (!response.ok) {
+            const err = await response.text();
+            console.error("Comment API error:", err);
+            throw new Error("Comment failed");
+        }
+
+        // Reload comments after success
+        loadComments();
+
+    } catch (error) {
+        console.error(error);
+        showToast("Failed to add comment", "error");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    async function likePost(postId) {
+    const postElement = document.getElementById(`post-${postId}`);
+    if (!postElement) return;
+
+    // ✅ Correct selector
+    const likeBtn = postElement.querySelector('.post-actions span');
+    if (!likeBtn) return;
+
+    const isLiked = likeBtn.classList.contains('liked');
+
+    // Extract count safely
+    const countMatch = likeBtn.textContent.match(/\d+/);
+    let count = countMatch ? parseInt(countMatch[0]) : 0;
+
+    // 🔥 Optimistic UI
+    likeBtn.classList.toggle('liked');
+    likeBtn.textContent = `❤️ ${isLiked ? count - 1 : count + 1}`;
+
+    try {
+        const response = await fetchWithAuth(
+            `${API_BASE_URL}/posts/${postId}/like`,
+            { method: 'POST' }
+        );
+
+        if (!response.ok) {
+            throw new Error("Like API failed");
+        }
+
+        // optional JSON parse
+        try {
+            await response.json();
+        } catch {}
+
+        console.log("Like API called successfully");
+
+    } catch (error) {
+        console.error("Like error:", error);
+
+        // 🔁 Rollback UI
+        likeBtn.classList.toggle('liked');
+        likeBtn.textContent = `❤️ ${count}`;
+
+        showToast('Failed to like post', 'error');
+    }
+}
+
 
     function openCreatePostModal() {
         if (createPostModal) {
@@ -3423,6 +4375,21 @@
             });
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         // Post form submission
         const postForm = document.getElementById('postForm');
         if (postForm) {
@@ -3480,6 +4447,31 @@
             });
         }
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Dating Functions
     async function loadDatingProfiles() {
@@ -4658,20 +5650,165 @@
     }
 
     // Global Search
-    document.addEventListener('DOMContentLoaded', function() {
-        const globalSearch = document.getElementById('globalSearch');
-        if (globalSearch) {
-            globalSearch.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    const query = this.value.trim();
-                    if (query) {
-                        showToast('Search feature coming soon', 'info');
-                        // Implement search functionality here
-                    }
-                }
-            });
-        }
+    async function performSearch(query) {
+    const resultsBox = document.getElementById("searchResults");
+
+    try {
+        const res = await fetchWithAuth(
+            `${API_BASE_URL}/search?q=${encodeURIComponent(query)}`
+        );
+        const data = await res.json();
+
+        if (!data.success) return;
+
+        resultsBox.innerHTML = '';
+        resultsBox.classList.remove("hidden");
+
+        data.users.forEach(u => {
+            const div = document.createElement("div");
+            div.className = "search-user-item";
+
+            div.innerHTML = `
+                <img src="${u.profile_picture
+                    ? `${API_BASE_URL}/assets/profiles/${u.profile_picture}`
+                    : 'https://ui-avatars.com/api/?name=User'}" />
+
+                <div class="search-user-info">
+                    <strong>${u.username}</strong><br/>
+                    <span>${u.full_name || ''}</span>
+                </div>
+
+                <button class="search-follow-btn ${u.is_following ? 'unfollow' : 'follow'}"
+                        onclick="toggleFollowFromSearch(${u.id}, this)">
+                    ${u.is_following ? 'Unfollow' : 'Follow'}
+                </button>
+            `;
+
+            resultsBox.appendChild(div);
+        });
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+
+document.getElementById("globalSearch")
+    .addEventListener("keyup", e => {
+        const q = e.target.value.trim();
+        if (q.length >= 2) performSearch(q);
     });
+
+
+    // Posts section
+    if (data.posts.length) {
+        const postBlock = document.createElement("div");
+        postBlock.innerHTML = `<h3>Posts</h3>`;
+
+        data.posts.forEach(p => {
+            const div = document.createElement("div");
+            div.className = "search-post";
+            div.innerHTML = `
+                <strong>${p.username}</strong>
+                <p>${p.content || ''}</p>
+            `;
+            postBlock.appendChild(div);
+        });
+
+        postsGrid.appendChild(postBlock);
+    }
+
+// follow function
+async function toggleFollowFromSearch(userId, btn) {
+    const res = await fetchWithAuth(
+        `${API_BASE_URL}/users/${userId}/follow`,
+        { method: "POST" }
+    );
+
+    const data = await res.json();
+
+    if (!data.success) return;
+
+    if (data.action === "followed") {
+        btn.textContent = "Unfollow";
+        btn.className = "search-follow-btn unfollow";
+    } else {
+        btn.textContent = "Follow";
+        btn.className = "search-follow-btn follow";
+    }
+
+    // 🔥 check mutual follow for chat
+    checkChatPermission(userId, btn);
+    hideSearchResults();
+
+}
+
+async function checkChatPermission(userId, btn) {
+    const res = await fetchWithAuth(
+        `${API_BASE_URL}/users/${userId}/chat-permission`
+    );
+
+    const data = await res.json();
+
+    if (data.can_chat) {
+        const chatBtn = document.createElement("button");
+        chatBtn.textContent = "Chat";
+        chatBtn.className = "search-follow-btn follow";
+        chatBtn.onclick = () => openChat(userId);
+        btn.parentElement.appendChild(chatBtn);
+    }
+}
+function openChat(userId) {
+    showToast("Chat enabled 🚀", "success");
+    hideSearchResults();
+
+    // later: open DM screen / WebSocket chat
+}
+
+const searchInput = document.getElementById("globalSearch");
+const resultsBox = document.getElementById("searchResults");
+
+searchInput.addEventListener("keyup", e => {
+    const q = e.target.value.trim();
+
+    if (q.length < 2) {
+        hideSearchResults();
+        return;
+    }
+
+    performSearch(q);
+});
+
+function hideSearchResults() {
+    const resultsBox = document.getElementById("searchResults");
+    if (!resultsBox) return;
+
+    resultsBox.classList.add("hidden");
+    resultsBox.innerHTML = "";
+}
+
+document.addEventListener("click", e => {
+    const searchBox = document.getElementById("globalSearch");
+    const resultsBox = document.getElementById("searchResults");
+
+    if (!searchBox || !resultsBox) return;
+
+    if (
+        !searchBox.contains(e.target) &&
+        !resultsBox.contains(e.target)
+    ) {
+        hideSearchResults();
+    }
+});
+
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+        hideSearchResults();
+    }
+});
+
+
 
     // Initialize
     async function init() {
